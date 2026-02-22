@@ -1,0 +1,13 @@
+{
+  "name": "onelock-snips",
+  "contributes": {
+    "snippets": [
+      {
+        "language": [
+          "nix"
+        ],
+        "path": "./nix.json"
+      }
+    ]
+  }
+}
