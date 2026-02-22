@@ -29,6 +29,9 @@
                 treesitter
                 yazi
               ])
+              ++ (with self.modules.visual; [
+                colorizer
+              ])
               ++ [ self.modules.nixvim.core ];
           };
         };
