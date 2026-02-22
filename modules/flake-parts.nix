@@ -31,6 +31,7 @@
               ])
               ++ (with self.modules.visual; [
                 colorizer
+                dashboard
               ])
               ++ [ self.modules.nixvim.core ];
           };
