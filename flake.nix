@@ -1,5 +1,5 @@
 {
-  description = "onevix editor";
+  description = "nixvimmaxxing config by onelock";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
