@@ -26,6 +26,7 @@
                 lsp
                 luasnip
                 todo-comments
+                treesitter
               ])
               ++ [ self.modules.nixvim.core ];
           };
