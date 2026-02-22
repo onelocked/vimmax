@@ -19,6 +19,10 @@
               plugins.which-key
               plugins.snacks
               plugins.options
+              plugins.buffer-manager
+
+
+
               nixvim.core
             ];
           };
