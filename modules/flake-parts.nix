@@ -28,6 +28,7 @@
                 todo-comments
                 treesitter
                 yazi
+                lazygit
               ])
               ++ (with self.modules.visual; [
                 colorizer
