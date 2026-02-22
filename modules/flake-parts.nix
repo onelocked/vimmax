@@ -36,6 +36,7 @@
                 extra-visual
                 fidget
                 noice
+                lualine
               ])
               ++ [ self.modules.nixvim.core ];
           };
