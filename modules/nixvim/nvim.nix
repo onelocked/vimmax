@@ -6,7 +6,7 @@
       ...
     }:
     let
-      inherit (self.helpers.onevix) icons;
+      inherit (self) icons;
     in
     {
       luaLoader.enable = false;
@@ -15,7 +15,7 @@
       };
 
       globals = {
-        mapleader = self.helpers.onevix.leader;
+        mapleader = self.onevix.leader;
         floating_window_options.border = "rounded";
       };
 

@@ -4,11 +4,10 @@
     {
       pkgs,
       lib,
-      config,
       ...
     }:
     let
-      inherit (self.helpers.onevix.mkKey) mkKeymap;
+      inherit (self.mkKey) mkKeymap;
       inherit (lib.nixvim) mkRaw;
     in
     {
@@ -19,7 +18,7 @@
       plugins = {
         which-key = {
           enable = true;
-          settings.spec = config.wKeyList;
+          settings.spec = self.wKeyList;
           settings.preset = "helix";
         };
         tmux-navigator.enable = false;
