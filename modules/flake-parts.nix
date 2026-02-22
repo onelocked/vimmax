@@ -33,6 +33,8 @@
                 colorizer
                 dashboard
                 dressing
+                extra-visual
+                fidget
               ])
               ++ [ self.modules.nixvim.core ];
           };
