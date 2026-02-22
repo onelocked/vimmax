@@ -14,21 +14,18 @@
       packages = {
         default = inputs.nixvim.legacyPackages.${system}.makeNixvimWithModule {
           module = {
-            imports = with self.modules; [
-              plugins.blink-cmp
-              plugins.which-key
-              plugins.snacks
-              plugins.options
-              plugins.buffer-manager
-
-
-
-              nixvim.core
-            ];
+            imports =
+              (with self.modules.plugins; [
+                blink-cmp
+                which-key
+                snacks
+                options
+                buffer-manager
+              ])
+              ++ [ self.modules.nixvim.core ];
           };
         };
       };
-
       formatter = pkgs.nixfmt-tree;
     };
 }
