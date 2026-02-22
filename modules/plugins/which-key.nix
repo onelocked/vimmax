@@ -4,6 +4,7 @@
     {
       pkgs,
       lib,
+      config,
       ...
     }:
     let
@@ -18,7 +19,7 @@
       plugins = {
         which-key = {
           enable = true;
-          settings.spec = self.wKeyList;
+          settings.spec = config.wKeyList;
           settings.preset = "helix";
         };
         tmux-navigator.enable = false;

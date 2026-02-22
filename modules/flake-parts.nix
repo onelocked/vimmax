@@ -17,6 +17,8 @@
             imports = with self.modules; [
               plugins.blink-cmp
               plugins.which-key
+              plugins.snacks
+              plugins.options
               nixvim.core
             ];
           };

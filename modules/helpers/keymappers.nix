@@ -26,11 +26,6 @@ in
         };
       };
 
-      wKeyList = mkOption {
-        type = types.listOf types.attrs;
-        description = "List of which-key mappings for UI display";
-      };
-
       onevix = {
         leader = mkOption {
           description = "The leader key for nvim";
