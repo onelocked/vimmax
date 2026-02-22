@@ -23,6 +23,9 @@
                 buffer-manager
                 flash
                 gitsigns
+                lsp
+                luasnip
+                todo-comments
               ])
               ++ [ self.modules.nixvim.core ];
           };
