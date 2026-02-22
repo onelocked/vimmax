@@ -14,6 +14,7 @@
         default = inputs.nixvim.legacyPackages.${system}.makeNixvimWithModule {
           module = {
             imports = with self.modules.plugins; [
+              blink-cmp
             ];
           };
         };
