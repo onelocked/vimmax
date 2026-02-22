@@ -21,6 +21,8 @@
                 snacks
                 options
                 buffer-manager
+                flash
+                gitsigns
               ])
               ++ [ self.modules.nixvim.core ];
           };
