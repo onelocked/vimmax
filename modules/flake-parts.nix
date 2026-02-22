@@ -1,6 +1,5 @@
-{ inputs, ... }:
+{ inputs, self, ... }:
 {
-
   systems = [
     "x86_64-linux"
     "aarch64-linux"
@@ -9,28 +8,17 @@
   ];
 
   perSystem =
-    { system, ... }:
-    let
-      nixvimLib = inputs.nixvim.lib.${system};
-      nixvim' = inputs.nixvim.legacyPackages.${system};
-      nixvimModule = {
-        inherit system;
-        module = import ./vix;
-        extraSpecialArgs = {
-          inherit inputs;
+    { system, pkgs, ... }:
+    {
+      packages = {
+        default = inputs.nixvim.legacyPackages.${system}.makeNixvimWithModule {
+          module = {
+            imports = with self.modules.plugins; [
+            ];
+          };
         };
       };
-      nvim = nixvim'.makeNixvimWithModule nixvimModule;
-    in
-    {
-      checks = {
-        default = nixvimLib.check.mkTestDerivationFromNixvimModule nixvimModule;
-      };
 
-      packages = {
-        default = nvim;
-      };
-
-      formatter = inputs.nixpkgs.nixfmt-tree;
+      formatter = pkgs.nixfmt-tree;
     };
 }
