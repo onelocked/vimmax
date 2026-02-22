@@ -35,6 +35,7 @@
                 dressing
                 extra-visual
                 fidget
+                noice
               ])
               ++ [ self.modules.nixvim.core ];
           };
