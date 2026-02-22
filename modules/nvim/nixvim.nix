@@ -3,6 +3,7 @@
   flake.modules.nixvim.core =
     {
       lib,
+      pkgs,
       ...
     }:
     let
@@ -13,7 +14,16 @@
       dependencies = {
         gcc.enable = true;
       };
-
+      performance.byteCompileLua = {
+        enable = true;
+        plugins = true;
+        nvimRuntime = true;
+      };
+      vimAlias = true;
+      clipboard.providers.wl-copy = {
+        enable = true;
+        package = pkgs.wl-clipboard-rs;
+      };
       globals = {
         mapleader = self.onevix.leader;
         floating_window_options.border = "rounded";
