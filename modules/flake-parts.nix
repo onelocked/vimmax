@@ -37,6 +37,7 @@
                 fidget
                 noice
                 lualine
+                tokyodark
               ])
               ++ [ self.modules.nixvim.core ];
           };
