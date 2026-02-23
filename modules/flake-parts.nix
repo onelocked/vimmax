@@ -29,6 +29,7 @@
                 treesitter
                 yazi
                 lazygit
+                # visual-multi
               ])
               ++ (with self.modules.visual; [
                 colorizer
