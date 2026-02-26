@@ -29,6 +29,7 @@
                 treesitter
                 yazi
                 lazygit
+                grug-far
                 # visual-multi
               ])
               ++ (with self.modules.visual; [
