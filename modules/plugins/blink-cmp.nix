@@ -1,10 +1,20 @@
 {
   flake.modules.plugins.blink-cmp = {
     plugins = {
+      blink-cmp-spell.enable = true;
       blink-cmp = {
         enable = true;
 
         settings = {
+          sources = {
+            sources.default = [
+              "lsp"
+              "path"
+              "luasnip"
+              "buffer"
+              "spell"
+            ];
+          };
           completion.menu.border = "rounded";
           snippets.preset = "luasnip";
           completion = {
