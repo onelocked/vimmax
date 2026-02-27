@@ -30,6 +30,7 @@
                 yazi
                 lazygit
                 grug-far
+                cord
                 # visual-multi
               ])
               ++ (with self.modules.visual; [
