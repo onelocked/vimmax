@@ -2,14 +2,54 @@
   flake.modules.plugins.blink-cmp = {
     plugins = {
       blink-ripgrep.enable = true;
+      blink-cmp-words.enable = true;
       blink-cmp = {
         enable = true;
         settings = {
           sources = {
-            sources.default = [
+            default = [
+              "buffer"
+              "lsp"
+              "path"
               "ripgrep"
+              "dictionary"
+              "thesaurus"
+              "snippets"
             ];
             providers = {
+              snippets = {
+                score_offset = 300;
+              };
+              thesaurus = {
+                name = "blink-cmp-words";
+                module = "blink-cmp-words.thesaurus";
+                opts = {
+                  score_offset = 0;
+                  definition_pointers = [
+                    "!"
+                    "&"
+                    "^"
+                  ];
+                  similarity_pointers = [
+                    "&"
+                    "^"
+                  ];
+                  similarity_depth = 2;
+                };
+              };
+              dictionary = {
+                name = "blink-cmp-words";
+                module = "blink-cmp-words.dictionary";
+                opts = {
+                  dictionary_search_threshold = 3;
+                  score_offset = 0;
+                  definition_pointers = [
+                    "!"
+                    "&"
+                    "^"
+                  ];
+                };
+              };
               ripgrep = {
                 async = true;
                 module = "blink-ripgrep";
@@ -30,6 +70,10 @@
                 };
               };
             };
+          };
+          per_filetype = {
+            text = [ "dictionary" ];
+            markdown = [ "thesaurus" ];
           };
           completion.menu.border = "rounded";
           snippets.preset = "luasnip";
