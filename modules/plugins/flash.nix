@@ -12,17 +12,24 @@
         enable = true;
         settings.modes.char.enabled = false;
       };
-      keymaps = [
-        (mkKeymap "n" "<leader>fs" (
-          # lua
-          mkRaw ''
-            function()
-              require('flash').jump({
-                forward = true, wrap = true, multi_window = true
-              })
-              end
-          ''
-        ) "Flash Search")
-      ];
+      keymaps =
+        map
+          (
+            mode:
+            mkKeymap mode "<leader>fs" (
+              # lua
+              mkRaw ''
+                function()
+                  require('flash').jump({
+                    forward = true, wrap = true, multi_window = true
+                  })
+                end
+              ''
+            ) "Flash Search"
+          )
+          [
+            "n"
+            "v"
+          ];
     };
 }
