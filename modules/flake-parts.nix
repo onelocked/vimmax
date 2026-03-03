@@ -31,6 +31,7 @@
                 lazygit
                 grug-far
                 cord
+                hop
                 # visual-multi
               ])
               ++ (with self.modules.visual; [
