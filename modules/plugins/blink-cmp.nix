@@ -12,44 +12,33 @@
               "lsp"
               "path"
               "ripgrep"
-              # "dictionary"
-              # "thesaurus"
+              "dictionary"
               "snippets"
             ];
             providers = {
-              snippets = {
+              path = {
                 score_offset = 300;
               };
-              # thesaurus = {
-              #   name = "blink-cmp-words";
-              #   module = "blink-cmp-words.thesaurus";
-              #   opts = {
-              #     score_offset = 0;
-              #     definition_pointers = [
-              #       "!"
-              #       "&"
-              #       "^"
-              #     ];
-              #     similarity_pointers = [
-              #       "&"
-              #       "^"
-              #     ];
-              #     similarity_depth = 2;
-              #   };
-              # };
-              # dictionary = {
-              #   name = "blink-cmp-words";
-              #   module = "blink-cmp-words.dictionary";
-              #   opts = {
-              #     dictionary_search_threshold = 3;
-              #     score_offset = 0;
-              #     definition_pointers = [
-              #       "!"
-              #       "&"
-              #       "^"
-              #     ];
-              #   };
-              # };
+              snippets = {
+                score_offset = 250;
+              };
+              lsp = {
+                score_offset = 200;
+              };
+              dictionary = {
+                score_offset = 50;
+                name = "blink-cmp-words";
+                module = "blink-cmp-words.dictionary";
+                opts = {
+                  dictionary_search_threshold = 3;
+                  score_offset = 0;
+                  definition_pointers = [
+                    "!"
+                    "&"
+                    "^"
+                  ];
+                };
+              };
               ripgrep = {
                 async = true;
                 module = "blink-ripgrep";
