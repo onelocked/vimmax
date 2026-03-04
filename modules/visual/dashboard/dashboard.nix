@@ -1,0 +1,77 @@
+{
+  flake.modules.visual.dashboard =
+    { lib, pkgs, ... }:
+    let
+      chafa = "${pkgs.chafa}/bin/chafa";
+      inherit (lib.nixvim) mkRaw;
+    in
+    {
+      plugins.snacks.settings.dashboard = {
+        enabled = true;
+        sections =
+          # lua
+          mkRaw ''
+            {
+              {
+                section = "terminal",
+                cmd = "${chafa} ${./aemeath.jpg} --format symbols --symbols vhalf --size 60x17; sleep .1",
+                padding = 2,
+              },
+              { icon = " ", key = "ff", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
+              { icon = " ", key = "f/", desc = "Find Text", action = ":lua Snacks.dashboard.pick('live_grep')" },
+              {
+                icon = " ",
+                desc = "Browse Repo",
+                key = "b",
+                action = function()
+                  Snacks.gitbrowse()
+                end,
+              },
+              { icon = " ", key = "q", desc = "Quit", padding = 1, action = ":qa" },
+
+            { icon = " ", title = "Recent Files", section = "recent_files", indent = 2, padding = 1 },
+              function()
+                local in_git = Snacks.git.get_root() ~= nil
+                local cmds = {
+                  {
+                    title = "Open Issues",
+                    cmd = "PAGER= gh issue list -L 3",
+                    key = "i",
+                    action = function()
+                      vim.fn.jobstart("gh issue list --web", { detach = true })
+                    end,
+                    icon = " ",
+                    height = 5,
+                  },
+                  {
+                    icon = " ",
+                    title = "Open PRs",
+                    cmd = "PAGER= gh pr list -L 3",
+                    key = "P",
+                    action = function()
+                      vim.fn.jobstart("gh pr list --web", { detach = true })
+                    end,
+                    height = 5,
+                  },
+                  {
+                    icon = " ",
+                    title = "Git Status",
+                    cmd = "git --no-pager diff --stat -B -M -C",
+                    height = 10,
+                  },
+                }
+                return vim.tbl_map(function(cmd)
+                  return vim.tbl_extend("force", {
+                    section = "terminal",
+                    enabled = in_git,
+                    padding = 1,
+                    ttl = 5 * 60,
+                    indent = 3,
+                  }, cmd)
+                end, cmds)
+              end,
+            }
+          '';
+      };
+    };
+}
