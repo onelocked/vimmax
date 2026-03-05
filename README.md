@@ -1,13 +1,20 @@
 <div align="center">
 
 # Vimmax
-
-## Usage
-
-`nix run github:/onelocked/vimmax`
+<br>
 
 ## Screenshots
+<br>
 
+**Dashboard**
+
+<img src="/assets/dashboard.png" width="350">
+
+<br>
+<br>
+
+**Editor**
+<br>
 |    |    |
 |:-------:|:-------:|
 | <img src="/assets/overview.png" width="350"> | <img src="/assets/snackspicker.png" width="350"> |
@@ -18,3 +25,28 @@
 
 
 </div>
+
+# Run
+```nix
+nix run github:/onelocked/vimmax
+```
+# Installation
+
+**Add vimmax as a flake input**
+```nix
+# In your flake.nix
+inputs.vimmax.url = "github:onelocked/vimmax";
+```
+
+**NixOS or Home Manager**
+```nix
+# For NixOS
+environment.packages = [
+  inputs.vimmax.packages.${pkgs.stdenv.hostPlatform.system}.default
+];
+
+# For Home Manager
+home.packages = [
+  inputs.vimmax.packages.${pkgs.stdenv.hostPlatform.system}.default
+];
+```
