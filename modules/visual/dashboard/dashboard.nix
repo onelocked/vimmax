@@ -27,9 +27,9 @@
                   Snacks.gitbrowse()
                 end,
               },
-              { icon = " ", key = "q", desc = "Quit", padding = 1, action = ":qa" },
+              { icon = " ", key = "q", desc = "Quit", padding = 2, action = ":qa" },
 
-            { icon = " ", title = "Recent Files", section = "recent_files", indent = 2, padding = 1 },
+            { icon = " ", title = "Recent Files", section = "recent_files", indent = 2, padding = 2 },
               function()
                 local in_git = Snacks.git.get_root() ~= nil
                 local cmds = {
@@ -37,7 +37,7 @@
                     icon = " ",
                     title = "Git Status",
                     cmd = "git --no-pager diff --stat -B -M -C",
-                    height = 10,
+                    height = 7,
                   },
                   {
                     title = "Open Issues",
