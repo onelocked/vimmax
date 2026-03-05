@@ -34,6 +34,12 @@
                 local in_git = Snacks.git.get_root() ~= nil
                 local cmds = {
                   {
+                    icon = " ",
+                    title = "Git Status",
+                    cmd = "git --no-pager diff --stat -B -M -C",
+                    height = 10,
+                  },
+                  {
                     title = "Open Issues",
                     cmd = "PAGER= gh issue list -L 3",
                     key = "i",
@@ -41,7 +47,7 @@
                       vim.fn.jobstart("gh issue list --web", { detach = true })
                     end,
                     icon = " ",
-                    height = 5,
+                    height = 7,
                   },
                   {
                     icon = " ",
@@ -51,13 +57,7 @@
                     action = function()
                       vim.fn.jobstart("gh pr list --web", { detach = true })
                     end,
-                    height = 5,
-                  },
-                  {
-                    icon = " ",
-                    title = "Git Status",
-                    cmd = "git --no-pager diff --stat -B -M -C",
-                    height = 10,
+                    height = 7,
                   },
                 }
                 return vim.tbl_map(function(cmd)
