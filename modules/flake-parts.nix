@@ -43,7 +43,6 @@
                 noice
                 lualine
                 gruvbox
-                smear-cursor
               ])
               ++ [ self.modules.nixvim.core ];
           };
