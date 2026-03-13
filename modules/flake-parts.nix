@@ -33,6 +33,7 @@
                 cord
                 hop
                 # visual-multi
+                barbecue
               ])
               ++ (with self.modules.visual; [
                 colorizer
