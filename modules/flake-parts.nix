@@ -32,9 +32,7 @@
                 grug-far
                 cord
                 hop
-                navic
                 # visual-multi
-                barbecue
               ])
               ++ (with self.modules.visual; [
                 colorizer
