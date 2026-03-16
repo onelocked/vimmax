@@ -35,7 +35,7 @@
                 # visual-multi
               ])
               ++ (with self.modules.visual; [
-                colorizer
+                highlight-colors
                 dashboard
                 dressing
                 extra-visual
