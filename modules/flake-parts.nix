@@ -42,7 +42,7 @@
                 fidget
                 noice
                 lualine
-                gruvbox
+                catppuccin
               ])
               ++ [ self.modules.nixvim.core ];
           };
