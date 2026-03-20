@@ -14,7 +14,7 @@
 
 **Editor**
 <br>
-<img src="./assets/overview.png" width="350">
+<img src="./assets/overview1.png" width="750">
 <br>
 |    |    |
 |:-------:|:-------:|
