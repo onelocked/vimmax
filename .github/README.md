@@ -8,17 +8,18 @@
 
 **Dashboard**
 
-<img src="/assets/dashboard.png" width="350">
-
+<img src="./assets/dashboard.png" width="350">
 <br>
 <br>
 
 **Editor**
 <br>
+<img src="./assets/overview.png" width="350">
+<br>
 |    |    |
 |:-------:|:-------:|
-| <img src="/assets/overview.png" width="350"> | <img src="/assets/snackspicker.png" width="350"> |
-| <img src="/assets/search-replace.png" width="350"> | <img src="/assets/git-blame.png" width="350"> |
+| <img src="./assets/yazi.png" width="350"> | <img src="./assets/snackspicker.png" width="350"> |
+| <img src="./assets/search-replace.png" width="350"> | <img src="./assets/git-blame.png" width="350"> |
 
 
 
