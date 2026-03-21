@@ -46,7 +46,7 @@
 
         ignorecase = true;
         smartcase = true;
-        mouse = "a";
+        mouse = "";
         cmdheight = 0;
 
         number = true;
