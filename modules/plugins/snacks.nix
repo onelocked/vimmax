@@ -239,12 +239,24 @@
         (mkKeymap "n" "<leader>ss" "<cmd>:lua Snacks.picker.smart()<cr>" "Smart")
         (mkKeymap "n" "<leader>s," "<cmd>:lua Snacks.picker.buffers({layout = 'vscode'})<cr>" "Buffers")
 
-        (mkKeymap "n" "<leader>ff" "<cmd>:lua Snacks.picker.files()<cr>" "Find Files")
-        (mkKeymap "n" "<leader>f/" "<cmd>:lua Snacks.picker.grep()<cr>" "Grep")
+        (mkKeymap "n" "<leader>ff" (mkRaw ''
+          function()
+            local git_root = vim.fn.systemlist("git rev-parse --show-toplevel")[1]
+            local cwd = (git_root and vim.v.shell_error == 0) and git_root or vim.fn.getcwd()
+            Snacks.picker.files({ cwd = cwd })
+          end
+        '') "Find Files")
+        (mkKeymap "n" "<leader>f/" (mkRaw ''
+          function()
+            local git_root = vim.fn.systemlist("git rev-parse --show-toplevel")[1]
+            local cwd = (git_root and vim.v.shell_error == 0) and git_root or vim.fn.getcwd()
+            Snacks.picker.grep({ cwd = cwd })
+          end
+        '') "Grep")
         (mkKeymap "n" "<leader>fr" "<cmd>:lua Snacks.picker.recent()<cr>" "Recent")
         (mkKeymap "n" "<leader>fp" "<cmd>:lua Snacks.picker.projects()<cr>" "Pickers")
 
-        (mkKeymap "n" "<leader>su" (lib.nixvim.mkRaw ''
+        (mkKeymap "n" "<leader>su" (mkRaw ''
           function()
             Snacks.picker.undo({
               win = {
