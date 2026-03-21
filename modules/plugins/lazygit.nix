@@ -9,8 +9,19 @@
     {
       plugins.lazygit = {
         enable = true;
+        settings = {
+          floating_window_border_chars = [
+            "╭"
+            "─"
+            "╮"
+            "│"
+            "╯"
+            "─"
+            "╰"
+            "│"
+          ];
+        };
       };
-
       keymaps = [
         (mkKeymap "n" "<leader>gg" (mkRaw ''
           function()
