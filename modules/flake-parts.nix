@@ -29,7 +29,7 @@
                 treesitter
                 yazi
                 lazygit
-                grug-far
+                # grug-far
                 cord
                 hop
                 # visual-multi
