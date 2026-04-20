@@ -14,6 +14,15 @@
         ''
           require('gitsigns').setup({
             current_line_blame = true,
+            current_line_blame_opts = {
+              delay = 300,           -- default 1000ms feels sluggish
+              virt_text_pos = 'eol', -- or 'right_align'
+              ignore_whitespace = false,
+            },
+            current_line_blame_formatter = '<author>, <author_time:%R> • <summary>',
+            attach_to_untracked = true,  -- show signs in new files too
+            signs_staged_enable = true,  -- different signs for staged vs unstaged
+
             word_diff = false,
             signs = {
               add = { text = '${LineLeft}' },
