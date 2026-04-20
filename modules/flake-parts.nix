@@ -9,10 +9,19 @@
   ];
 
   perSystem =
-    { system, pkgs, ... }:
     {
+      system,
+      pkgs,
+      ...
+    }:
+    {
+      _module.args.pkgs = import inputs.nixpkgs {
+        inherit system;
+        config.allowUnfree = true;
+      };
       packages = {
         default = inputs.nixvim.legacyPackages.${system}.makeNixvimWithModule {
+          inherit pkgs;
           module = {
             imports =
               (with self.modules.plugins; [
