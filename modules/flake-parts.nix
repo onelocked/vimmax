@@ -29,6 +29,7 @@
                 treesitter
                 yazi
                 lazygit
+                opencode
                 # grug-far
                 cord
                 hop
