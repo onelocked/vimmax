@@ -122,14 +122,24 @@
         vim.keymap.set({ "n", "x" }, "<leader>ap", "<cmd>Sidekick cli prompt<cr>", { desc = "Sidekick: select prompt" })
 
         -- Custom AI Ask (leader-a) using Snacks.input
+        -- We use manual filename expansion (@filename) instead of {file}/{this}
+        -- to prevent sidekick from automatically appending cursor position (:L:C),
+        -- which is redundant when we're already passing the specific line range.
         vim.keymap.set({ "n", "x" }, "<leader>aa", function()
-          local is_visual = vim.fn.mode():match("[vV]")
-          local target = is_visual and "{this}" or "{file}"
+          local is_visual = vim.fn.mode():match("^[vV\22]")
+          local target = "@" .. vim.fn.expand("%")
+          local range = ""
+          if is_visual then
+            local l1, l2 = vim.fn.line("v"), vim.fn.line(".")
+            if l1 > l2 then l1, l2 = l2, l1 end
+            range = string.format(" :L%d-L%d", l1, l2)
+          end
+
           Snacks.input({
             prompt = "AI Ask (" .. (is_visual and "selection" or "file") .. "): ",
           }, function(input)
             if input and input ~= "" then
-              require("sidekick.cli").send({ msg = input .. "\n" .. target, submit = true })
+              require("sidekick.cli").send({ msg = input .. "\n" .. target .. range, submit = true })
               if in_tmux() then
                 ensure_gemini_pane()
                 if not gemini_visible() then
