@@ -89,6 +89,21 @@
             end
           '';
         }
+        {
+          event = [
+            "FocusGained"
+            "BufEnter"
+            "CursorHold"
+            "CursorHoldI"
+          ];
+          pattern = "*";
+          command = "if mode() !~ '\\v(c|r.?|!|t)' && getcmdwintype() == '' | checktime | endif";
+        }
+        {
+          event = [ "FileChangedShellPost" ];
+          pattern = "*";
+          command = "echohl WarningMsg | echo 'File changed on disk. Buffer reloaded.' | echohl None";
+        }
       ];
 
       extraLuaPackages = lp: with lp; [ luarocks ];
