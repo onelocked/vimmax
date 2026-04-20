@@ -14,8 +14,14 @@
               "ripgrep"
               "dictionary"
               "snippets"
+              "codeium"
             ];
             providers = {
+              codeium = {
+                name = "codeium";
+                module = "codeium.blink";
+                score_offset = 1000;
+              };
               path = {
                 score_offset = 300;
               };

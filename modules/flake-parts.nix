@@ -39,6 +39,7 @@
                 yazi
                 lazygit
                 sidekick
+                windsurf
                 # grug-far
                 cord
                 hop
