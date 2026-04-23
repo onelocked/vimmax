@@ -43,6 +43,7 @@
                 # grug-far
                 cord
                 hop
+                silicon
                 # visual-multi
               ])
               ++ (with self.modules.visual; [
