@@ -1,4 +1,4 @@
-{ inputs, self, ... }:
+{ self, ... }:
 {
   flake.modules.plugins.buffer-manager =
     { pkgs, lib, ... }:
@@ -11,7 +11,12 @@
       extraPlugins = [
         (pkgs.vimUtils.buildVimPlugin {
           name = "buffer-manager";
-          src = inputs.buffer-manager;
+          src = pkgs.fetchFromGitHub {
+            owner = "j-morano";
+            repo = "buffer_manager.nvim";
+            rev = "a0ac2db39c8bd4a2b6ca897f38c88770f90d9323";
+            hash = "sha256-dTv5S2PbFEsyETpvf8urH9nHzgc48aMicX9+VH9DKQk=";
+          };
           dependencies = [ pkgs.vimPlugins.plenary-nvim ];
         })
       ];

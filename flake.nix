@@ -26,9 +26,5 @@
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
-    buffer-manager = {
-      url = "github:j-morano/buffer_manager.nvim";
-      flake = false;
-    };
   };
 }
