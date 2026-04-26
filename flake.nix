@@ -1,7 +1,15 @@
 {
   description = "nixvimmaxxing config by onelock";
 
-  outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } (inputs.import-tree ./modules);
+  outputs =
+    inputs@{ flake-parts, ... }:
+    flake-parts.lib.mkFlake { inherit inputs; } {
+      imports =
+        with inputs.nixpkgs.lib;
+        ./modules
+        |> fileset.fileFilter (file: file.hasExt "nix" && !hasPrefix "_" file.name)
+        |> fileset.toList;
+    };
 
   inputs = {
     nixpkgs.url = "https://channels.nixos.org/nixos-unstable/nixexprs.tar.xz";
@@ -18,7 +26,6 @@
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
-    import-tree.url = "github:vic/import-tree";
     buffer-manager = {
       url = "github:j-morano/buffer_manager.nvim";
       flake = false;
