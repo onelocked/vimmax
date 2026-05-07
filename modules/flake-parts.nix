@@ -7,6 +7,7 @@
     {
       system,
       pkgs,
+      inputs',
       ...
     }:
     {
@@ -15,7 +16,7 @@
         config.allowUnfree = true;
       };
       packages = {
-        default = inputs.nixvim.legacyPackages.${system}.makeNixvimWithModule {
+        default = inputs'.nixvim.legacyPackages.makeNixvimWithModule {
           inherit pkgs;
           module = {
             imports =
