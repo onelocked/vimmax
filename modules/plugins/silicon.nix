@@ -1,6 +1,6 @@
 { self, ... }:
 {
-  flake.modules.plugins.silicon =
+  m.plugins.silicon =
     { pkgs, lib, ... }:
     let
       inherit (self.mkKey) mkKeymap;

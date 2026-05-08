@@ -1,5 +1,5 @@
 {
-  flake.modules.plugins.navic = {
+  m.plugins.navic = {
     plugins.navic = {
       enable = true;
       settings = {

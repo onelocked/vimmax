@@ -1,5 +1,5 @@
 {
-  flake.modules.visual.lualine =
+  m.visual.lualine =
     { pkgs, ... }:
     {
       extraPlugins = [ pkgs.vimPlugins.lualine-nvim ];

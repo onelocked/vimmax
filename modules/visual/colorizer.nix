@@ -1,5 +1,5 @@
 {
-  flake.modules.visual.colorizer = {
+  m.visual.colorizer = {
     plugins = {
       lastplace.enable = true;
       colorizer = {

@@ -1,5 +1,5 @@
 {
-  flake.modules.plugins.time-tracker =
+  m.plugins.time-tracker =
     { pkgs, ... }:
     {
       extraPackages = [ pkgs.sqlite ];

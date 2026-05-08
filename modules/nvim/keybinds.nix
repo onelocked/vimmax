@@ -1,6 +1,6 @@
 { self, ... }:
 {
-  flake.modules.nixvim.core =
+  m.nixvim.core =
     let
       inherit (self.mkKey) mkKeymap wKeyObj;
       v = [

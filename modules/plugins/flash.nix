@@ -1,6 +1,6 @@
 { self, ... }:
 {
-  flake.modules.plugins.flash =
+  m.plugins.flash =
     { lib, ... }:
     let
       inherit (self.mkKey) mkKeymap;

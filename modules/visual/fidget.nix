@@ -1,5 +1,5 @@
 {
-  flake.modules.visual.fidget = {
+  m.visual.fidget = {
 
     plugins = {
       fidget = {

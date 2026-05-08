@@ -1,5 +1,5 @@
 {
-  flake.modules.plugins.options =
+  m.plugins.options =
     { lib, ... }:
     with lib;
     {

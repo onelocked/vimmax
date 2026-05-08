@@ -1,5 +1,5 @@
 {
-  flake.modules.plugins.windsurf =
+  m.plugins.windsurf =
     { pkgs, ... }:
     {
       extraPlugins = [ pkgs.vimPlugins.windsurf-nvim ];

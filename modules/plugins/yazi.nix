@@ -1,5 +1,5 @@
 {
-  flake.modules.plugins.yazi =
+  m.plugins.yazi =
     { pkgs, ... }:
     {
       extraPlugins = [ pkgs.vimPlugins.yazi-nvim ];

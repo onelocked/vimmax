@@ -1,5 +1,5 @@
 {
-  flake.modules.plugins.visual-multi = {
+  m.plugins.visual-multi = {
     plugins = {
       visual-multi = {
         enable = true;

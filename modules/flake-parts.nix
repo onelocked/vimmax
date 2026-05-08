@@ -1,6 +1,14 @@
-{ inputs, self, ... }:
 {
-  imports = [ inputs.flake-parts.flakeModules.modules ];
+  inputs,
+  lib,
+  config,
+  ...
+}:
+{
+  imports = [
+    inputs.flake-parts.flakeModules.modules
+    (lib.mkAliasOptionModule [ "m" ] [ "flake" "modules" ])
+  ];
   systems = import inputs.systems;
 
   perSystem =
@@ -20,7 +28,7 @@
           inherit pkgs;
           module = {
             imports =
-              (with self.modules.plugins; [
+              (with config.m.plugins; [
                 blink-cmp
                 which-key
                 snacks
@@ -43,7 +51,7 @@
                 time-tracker
                 # visual-multi
               ])
-              ++ (with self.modules.visual; [
+              ++ (with config.m.visual; [
                 highlight-colors
                 dashboard
                 dressing
@@ -53,7 +61,7 @@
                 lualine
                 catppuccin
               ])
-              ++ [ self.modules.nixvim.core ];
+              ++ [ config.m.nixvim.core ];
           };
         };
       };

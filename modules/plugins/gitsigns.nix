@@ -1,6 +1,6 @@
 { self, ... }:
 {
-  flake.modules.plugins.gitsigns =
+  m.plugins.gitsigns =
     { lib, pkgs, ... }:
     let
       inherit (self.mkKey) mkKeymap;

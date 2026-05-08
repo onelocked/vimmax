@@ -1,5 +1,5 @@
 {
-  flake.modules.plugins.blink-cmp =
+  m.plugins.blink-cmp =
     { pkgs, ... }:
     {
       extraPlugins = with pkgs.vimPlugins; [

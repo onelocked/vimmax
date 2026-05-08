@@ -1,5 +1,5 @@
 {
-  flake.modules.plugins.treesitter =
+  m.plugins.treesitter =
     { pkgs, ... }:
     {
       plugins = {

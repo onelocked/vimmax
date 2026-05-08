@@ -1,5 +1,5 @@
 {
-  flake.modules.visual.highlight-colors = {
+  m.visual.highlight-colors = {
     plugins.highlight-colors = {
       enable = true;
       settings = {

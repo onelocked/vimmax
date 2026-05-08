@@ -1,5 +1,5 @@
 {
-  flake.modules.plugins.lsp = {
+  m.plugins.lsp = {
     plugins.rustaceanvim = {
       enable = false;
     };

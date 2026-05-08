@@ -1,5 +1,5 @@
 {
-  flake.modules.visual.tokyodark =
+  m.visual.tokyodark =
     { pkgs, ... }:
     {
 

@@ -1,6 +1,6 @@
 { self, ... }:
 {
-  flake.modules.plugins.lsp =
+  m.plugins.lsp =
     { lib, ... }:
     let
       inherit (self.mkKey) mkKeymap wKeyObj;

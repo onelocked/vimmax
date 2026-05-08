@@ -1,5 +1,5 @@
 {
-  flake.modules.visual.dashboard =
+  m.visual.dashboard =
     { lib, pkgs, ... }:
     let
       chafa = "${pkgs.chafa}/bin/chafa";

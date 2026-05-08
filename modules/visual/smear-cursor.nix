@@ -1,5 +1,5 @@
 {
-  flake.modules.visual.smear-cursor = {
+  m.visual.smear-cursor = {
     plugins.smear-cursor = {
       enable = true;
       settings = {

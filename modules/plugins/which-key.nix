@@ -1,6 +1,6 @@
 { self, ... }:
 {
-  flake.modules.plugins.which-key =
+  m.plugins.which-key =
     {
       pkgs,
       lib,

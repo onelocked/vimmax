@@ -1,5 +1,5 @@
 {
-  flake.modules.visual.catppuccin =
+  m.visual.catppuccin =
     { lib, ... }:
     let
       inherit (lib.nixvim) mkRaw;

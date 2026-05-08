@@ -1,6 +1,6 @@
 { self, ... }:
 {
-  flake.modules.plugins.snacks =
+  m.plugins.snacks =
     { lib, ... }:
     let
       inherit (lib.nixvim) listToUnkeyedAttrs mkRaw;

@@ -1,6 +1,6 @@
 { self, ... }:
 {
-  flake.modules.plugins.hop = {
+  m.plugins.hop = {
     plugins.hop = {
       enable = true;
       settings = {

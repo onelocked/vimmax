@@ -1,6 +1,6 @@
 { self, ... }:
 {
-  flake.modules.plugins.buffer-manager =
+  m.plugins.buffer-manager =
     { pkgs, lib, ... }:
 
     let

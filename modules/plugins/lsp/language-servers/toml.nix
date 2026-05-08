@@ -1,5 +1,5 @@
 {
-  flake.modules.plugins.lsp =
+  m.plugins.lsp =
     { pkgs, lib, ... }:
     {
       plugins.lsp.servers.taplo.enable = true;

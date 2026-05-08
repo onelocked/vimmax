@@ -1,5 +1,5 @@
 {
-  flake.modules.plugins.luasnip = {
+  m.plugins.luasnip = {
     plugins = {
       luasnip = {
         enable = true;

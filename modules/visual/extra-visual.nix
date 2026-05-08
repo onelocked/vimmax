@@ -1,5 +1,5 @@
 {
-  flake.modules.visual.extra-visual =
+  m.visual.extra-visual =
     { pkgs, ... }:
     {
 

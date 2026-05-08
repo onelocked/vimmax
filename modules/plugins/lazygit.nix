@@ -1,5 +1,5 @@
 {
-  flake.modules.plugins.lazygit =
+  m.plugins.lazygit =
     { pkgs, ... }:
     {
       extraPlugins = [ pkgs.vimPlugins.lazygit-nvim ];

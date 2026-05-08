@@ -1,5 +1,5 @@
 {
-  flake.modules.plugins.opencode =
+  m.plugins.opencode =
     { pkgs, ... }:
     {
       extraPlugins = [ pkgs.vimPlugins.opencode-nvim ];

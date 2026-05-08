@@ -1,5 +1,5 @@
 {
-  flake.modules.plugins.conform =
+  m.plugins.conform =
     { pkgs, lib, ... }:
     {
       plugins = {

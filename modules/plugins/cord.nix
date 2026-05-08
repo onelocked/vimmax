@@ -1,5 +1,5 @@
 {
-  flake.modules.plugins.cord = {
+  m.plugins.cord = {
     plugins.cord = {
       enable = true;
       settings = {

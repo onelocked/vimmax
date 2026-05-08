@@ -1,5 +1,5 @@
 {
-  flake.modules.visual.gruvbox = {
+  m.visual.gruvbox = {
     colorschemes.gruvbox = {
       enable = true;
       settings = {

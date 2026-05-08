@@ -1,5 +1,5 @@
 {
-  flake.modules.visual.dressing = {
+  m.visual.dressing = {
     plugins = {
       dressing = {
         enable = true;

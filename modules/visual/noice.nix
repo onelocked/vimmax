@@ -1,5 +1,5 @@
 {
-  flake.modules.visual.noice = {
+  m.visual.noice = {
     plugins = {
       noice = {
         enable = true;

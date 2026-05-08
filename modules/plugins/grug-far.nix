@@ -1,6 +1,6 @@
 { self, ... }:
 {
-  flake.modules.plugins.grug-far =
+  m.plugins.grug-far =
     { pkgs, ... }:
     let
       inherit (self.mkKey) mkKeymap;

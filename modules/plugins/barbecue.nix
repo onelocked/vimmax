@@ -1,5 +1,5 @@
 {
-  flake.modules.plugins.barbecue = {
+  m.plugins.barbecue = {
     plugins.barbecue = {
       enable = true;
       settings = {

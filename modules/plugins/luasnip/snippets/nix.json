@@ -27,11 +27,11 @@
     "prefix": "flakeModule",
     "body": [
       "{",
-      "  flake.modules.nixos.${1:moduleName} = {",
+      "  m.nixos.${1:moduleName} = {",
       "    $0",
       "  };",
       "}"
     ],
-    "description": "Defines a NixOS flake module under flake.modules.nixos"
+    "description": "Defines a NixOS flake module under m.nixos"
   }
 }

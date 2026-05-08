@@ -1,5 +1,5 @@
 {
-  flake.modules.plugins.sidekick =
+  m.plugins.sidekick =
     { pkgs, ... }:
     {
       extraPlugins = [ pkgs.vimPlugins.sidekick-nvim ];

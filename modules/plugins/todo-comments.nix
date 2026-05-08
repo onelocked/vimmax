@@ -1,5 +1,5 @@
 {
-  flake.modules.plugins.todo-comments = {
+  m.plugins.todo-comments = {
 
     plugins.todo-comments = {
       enable = true;
