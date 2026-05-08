@@ -43,12 +43,13 @@
                 yazi
                 lazygit
                 sidekick
-                windsurf
+                # windsurf
                 # grug-far
                 cord
                 hop
                 silicon
                 time-tracker
+                supermaven
                 #navic
                 # visual-multi
                 #opencode
