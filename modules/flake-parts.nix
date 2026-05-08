@@ -49,7 +49,9 @@
                 hop
                 silicon
                 time-tracker
+                #navic
                 # visual-multi
+                #opencode
               ])
               ++ (with config.m.visual; [
                 highlight-colors

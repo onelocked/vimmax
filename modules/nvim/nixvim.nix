@@ -83,11 +83,13 @@
         {
           desc = "Highlight on yank";
           event = [ "TextYankPost" ];
-          callback = lib.nixvim.mkRaw ''
-            function()
-              vim.highlight.on_yank()
-            end
-          '';
+          callback =
+            lib.nixvim.mkRaw # lua
+              ''
+                function()
+                  vim.highlight.on_yank()
+                end
+              '';
         }
         {
           event = [
@@ -107,22 +109,24 @@
       ];
 
       extraLuaPackages = lp: with lp; [ luarocks ];
-      extraConfigLua = with icons.diagnostics; ''
-        vim.opt.whichwrap:append("<>[]hl")
-        vim.opt.listchars:append("space:·")
+      extraConfigLua =
+        with icons.diagnostics; # lua
+        ''
+          vim.opt.whichwrap:append("<>[]hl")
+          vim.opt.listchars:append("space:·")
 
-        -- below part set's the Diagnostic icons/colors
-        local signs = {
-          Hint = "${BoldHint}",
-          Info = "${BoldInformation}",
-          Warn = "${BoldWarning}",
-          Error = "${BoldError}",
-        }
+          -- below part set's the Diagnostic icons/colors
+          local signs = {
+            Hint = "${BoldHint}",
+            Info = "${BoldInformation}",
+            Warn = "${BoldWarning}",
+            Error = "${BoldError}",
+          }
 
-        for type, icon in pairs(signs) do
-          local hl = "DiagnosticSign" .. type
-          vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-        end
-      '';
+          for type, icon in pairs(signs) do
+            local hl = "DiagnosticSign" .. type
+            vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+          end
+        '';
     };
 }
