@@ -40,6 +40,7 @@
                 cord
                 hop
                 silicon
+                time-tracker
                 # visual-multi
               ])
               ++ (with self.modules.visual; [
