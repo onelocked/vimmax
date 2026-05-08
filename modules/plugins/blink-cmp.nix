@@ -12,6 +12,9 @@
           sources = {
             default = { "lsp", "path", "snippets", "buffer", "ripgrep", "codeium" },
             providers = {
+              snippets = {
+                    score_offset = 1000,
+                  },
               ripgrep = {
                 module = "blink-ripgrep",
                 name = "Ripgrep",
@@ -28,7 +31,9 @@
               codeium = {
                 name = "codeium",
                 module = "codeium.blink",
-                score_offset = 1000,
+                score_offset = 150,
+                async = true;
+                min_chars = 3;
               },
             },
           },
