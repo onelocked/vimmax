@@ -4,6 +4,21 @@
     {
       extraPlugins = [ pkgs.vimPlugins.lualine-nvim ];
       extraConfigLua = ''
+        local symbols = nil
+        local function get_symbols()
+          if not symbols and package.loaded["trouble"] then
+            symbols = require("trouble").statusline({
+              mode = "symbols",
+              groups = {},
+              title = false,
+              filter = { range = true },
+              format = "{kind_icon}{symbol.name:Normal}",
+              hl_group = "lualine_c_normal",
+            })
+          end
+          return symbols
+        end
+
         require('lualine').setup({
           options = {
             icons_enabled = true,
@@ -17,7 +32,7 @@
               right = "",
             },
             disabled_filetypes = {
-              statusline = { },
+              statusline = { "alpha", "dashboard", "snacks_dashboard" },
               winbar = { },
             },
             ignore_focus = { },
@@ -37,7 +52,19 @@
               "diff",
               "diagnostics",
             },
-            lualine_c = { "filename" },
+            lualine_c = {
+              "filename",
+              {
+                function()
+                  local s = get_symbols()
+                  return s and s.get()
+                end,
+                cond = function()
+                  local s = get_symbols()
+                  return vim.bo.buftype == "" and s and s.has()
+                end,
+              },
+            },
             lualine_x = {
               "encoding",
               "fileformat",

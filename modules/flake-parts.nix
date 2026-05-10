@@ -50,7 +50,8 @@
                 silicon
                 time-tracker
                 supermaven
-                dropbar
+                # dropbar
+                trouble
                 #navic
                 # visual-multi
                 #opencode
