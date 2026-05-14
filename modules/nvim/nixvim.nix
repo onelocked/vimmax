@@ -22,7 +22,7 @@
       vimAlias = true;
       clipboard.providers.wl-copy = {
         enable = true;
-        package = pkgs.wl-clipboard-rs;
+        package = pkgs.wl-clipboard;
       };
       globals = {
         mapleader = self.onevix.leader;
