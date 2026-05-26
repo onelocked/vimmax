@@ -24,12 +24,11 @@
             icons_enabled = true,
             theme = "auto",
             component_separators = {
-              left = "",
-              right = "",
+              left = "│",
+              right = "│",
             },
             section_separators = {
-              left = "",
-              right = "",
+              left = "▌",
             },
             disabled_filetypes = {
               statusline = { "alpha", "dashboard", "snacks_dashboard" },
@@ -53,15 +52,30 @@
               "diagnostics",
             },
             lualine_c = {
-              "filename",
               {
-                function()
-                  local s = get_symbols()
-                  return s and s.get()
+                'diff',
+                symbols = {
+                  added = ' ',
+                  modified = ' ',
+                  removed = ' ',
+                },
+                source = function()
+                  local gitsigns = vim.b.gitsigns_status_dict
+                  if gitsigns then
+                    return {
+                      added = gitsigns.added,
+                      modified = gitsigns.changed,
+                      removed = gitsigns.removed,
+                    }
+                  end
                 end,
+              },
+
+              'filename',
+              {
+                symbols and symbols.get,
                 cond = function()
-                  local s = get_symbols()
-                  return vim.bo.buftype == "" and s and s.has()
+                  return vim.b.trouble_lualine ~= false and symbols.has()
                 end,
               },
             },
