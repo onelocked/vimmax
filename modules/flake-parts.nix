@@ -64,7 +64,8 @@
                 fidget
                 noice
                 lualine
-                catppuccin
+                # catppuccin
+                retro
               ])
               ++ [ config.m.nixvim.core ];
           };
