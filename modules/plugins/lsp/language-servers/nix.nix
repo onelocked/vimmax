@@ -9,11 +9,11 @@
         };
         conform-nvim.settings = {
           formatters_by_ft.nix = [ "nixfmt" ];
-          formatters.nixfmt.command = lib.getExe pkgs.nixfmt; # FIX: this is not really doing anything
+          formatters.nixfmt.command = lib.getExe pkgs.nixfmt-rs;
         };
       };
       extraPackages = with pkgs; [
-        nixfmt
+        nixfmt-rs
       ];
     };
 }

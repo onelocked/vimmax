@@ -70,6 +70,6 @@
           };
         };
       };
-      formatter = pkgs.nixfmt-tree;
+      formatter = pkgs.nixfmt-rs;
     };
 }
