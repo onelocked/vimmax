@@ -1,9 +1,18 @@
 {
   m.visual.dashboard =
-    { lib, pkgs, ... }:
+    {
+      lib,
+      pkgs,
+      theme,
+      ...
+    }:
     let
       chafa = "${pkgs.chafa}/bin/chafa";
       inherit (lib.nixvim) mkRaw;
+      retro-image = pkgs.fetchurl {
+        url = "https://raw.githubusercontent.com/onelocked/images/refs/heads/main/neovim/retro.jpg";
+        sha256 = "sha256-c9xwiFTicLGnIlUwE5xaHXGr15QK96uWQWCiOIR82as=";
+      };
     in
     {
       plugins.snacks.settings.dashboard = {
@@ -14,7 +23,9 @@
             {
               {
                 section = "terminal",
-                cmd = "${chafa} ${./aemeath.jpg} --format symbols --symbols vhalf --size 60x17; sleep .1",
+                cmd = "${chafa} ${
+                  if theme == "dark" then ./aemeath.jpg else retro-image
+                } --format symbols --symbols vhalf --size 60x17; sleep .1",
                 padding = 2,
               },
               { icon = " ", key = "ff", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
