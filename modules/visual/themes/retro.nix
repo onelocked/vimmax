@@ -10,21 +10,21 @@
         settings = {
           color_overrides = {
             mocha = {
-              rosewater = "#8e2a46";
-              flamingo = "#842844";
-              red = "#9e1c1c";
-              maroon = "#7a1830";
-              pink = "#782858";
-              peach = "#9e4e00";
-              yellow = "#6b6100";
-              mauve = "#5c2488";
-              green = "#246628";
-              teal = "#005959";
-              sky = "#22634e";
+              rosewater = "#6e1278";
+              flamingo = "#9c3010";
+              red = "#b80018";
+              maroon = "#620030";
+              pink = "#920070";
+              peach = "#8c4a00";
+              yellow = "#685500";
+              mauve = "#a20b27";
+              green = "#0a6806";
+              teal = "#006055";
+              sky = "#0033c4";
 
-              sapphire = "#10587a";
+              sapphire = "#005a8e";
               blue = "#183870";
-              lavender = "#502888";
+              lavender = "#3e0087";
 
               text = "#151515";
               subtext1 = "#252525";
