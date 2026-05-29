@@ -31,7 +31,7 @@
               subtext0 = "#363636";
               overlay2 = "#3d4c88";
               overlay1 = "#737373";
-              overlay0 = "#8e8e8e";
+              overlay0 = "#383838";
               surface2 = "#a0a0a0";
               surface1 = "#afafaf";
               surface0 = "#b8b8b8";
@@ -46,9 +46,9 @@
               mkRaw ''
                 function(colors)
                   return {
-                    Comment = { fg = "#555555", style = { "bold", "italic" } },
-                    ["@comment"] = { fg = "#555555", style = { "bold", "italic" } },
-                    ["@comment.documentation"] = { fg = "#555555", style = { "bold", "italic" } },
+                    Comment = { fg = "#666666", style = { "bold", "italic" } },
+                    ["@comment"] = { fg = "#666666", style = { "bold", "italic" } },
+                    ["@comment.documentation"] = { fg = "#666666", style = { "bold", "italic" } },
 
                     -- Fix Line Numbers
                     LineNr = { fg = colors.overlay1 },
