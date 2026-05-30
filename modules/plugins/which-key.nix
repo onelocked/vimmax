@@ -1,20 +1,7 @@
-{ self, ... }:
 {
   m.plugins.which-key =
+    { config, ... }:
     {
-      pkgs,
-      lib,
-      config,
-      ...
-    }:
-    let
-      inherit (self.mkKey) mkKeymap;
-      inherit (lib.nixvim) mkRaw;
-    in
-    {
-      extraPlugins = with pkgs.vimPlugins; [
-        stay-centered-nvim
-      ];
 
       plugins = {
         which-key = {
@@ -38,10 +25,5 @@
         };
 
       };
-      keymaps = [
-        (mkKeymap "n" "<leader>st" (mkRaw ''
-          require('stay-centered').toggle
-        '') "Toggle stay-centered.nvim")
-      ];
     };
 }

@@ -60,6 +60,7 @@
                   dashboard
                   dressing
                   extra-visual
+                  neoscroll
                   fidget
                   noice
                   lualine
