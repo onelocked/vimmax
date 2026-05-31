@@ -4,7 +4,7 @@
     { theme, lib, ... }:
     {
       extraConfigLua = ''
-        ${lib.optionalString (theme == "dark") # lua
+        ${lib.optionalString (theme == "light") # lua
           ''
             vim.api.nvim_set_hl(0, "HopUnmatched", { fg = "#000000" })
             vim.api.nvim_create_autocmd("ColorScheme", {
