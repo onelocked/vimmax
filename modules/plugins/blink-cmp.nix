@@ -13,13 +13,21 @@
             sources = {
               default = { "lsp", "path", "snippets", "buffer", "ripgrep" },
               providers = {
+                lsp = {
+                  name = "LSP",
+                  module = "blink.cmp.sources.lsp",
+                  score_offset = 1000, -- High priority for LSP
+                },
                 snippets = {
-                  score_offset = 1000,
+                  score_offset = 800,
                   },
+                buffer = {
+                  score_offset = 500, -- Lower than LSP
+                },
                 ripgrep = {
                   module = "blink-ripgrep",
                   name = "Ripgrep",
-                  score_offset = 100,
+                  score_offset = 100, -- Lowest
                   opts = {
                     prefix_min_len = 3,
                     context_size = 5,
@@ -29,13 +37,6 @@
                     search_casing = "--ignore-case",
                   },
                 },
-                -- codeium = {
-                --   name = "codeium",
-                --   module = "codeium.blink",
-                --   score_offset = 150,
-                --   async = true;
-                --   min_chars = 3;
-                -- },
               },
             },
             completion = {
