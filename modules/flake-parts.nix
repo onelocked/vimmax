@@ -24,52 +24,46 @@
         config.allowUnfree = true;
       };
       packages = {
-        default = lib.makeOverridable (
-          {
-            theme ? "dark",
-          }:
-          inputs'.nixvim.legacyPackages.makeNixvimWithModule {
-            inherit pkgs;
-            module = {
-              _module.args = { inherit theme; };
-              imports =
-                (with config.m.plugins; [
-                  blink-cmp
-                  which-key
-                  snacks
-                  options
-                  buffer-manager
-                  flash
-                  gitsigns
-                  lsp
-                  luasnip
-                  todo-comments
-                  treesitter
-                  yazi
-                  lazygit
-                  sidekick
-                  cord
-                  hop
-                  silicon
-                  time-tracker
-                  supermaven
-                  trouble
-                ])
-                ++ (with config.m.visual; [
-                  highlight-colors
-                  dashboard
-                  dressing
-                  extra-visual
-                  neoscroll
-                  fidget
-                  noice
-                  lualine
-                  (if theme == "light" then retro else catppuccin)
-                ])
-                ++ [ config.m.nixvim.core ];
-            };
-          }
-        ) { };
+        default = inputs'.nixvim.legacyPackages.makeNixvimWithModule {
+          inherit pkgs;
+          module = {
+            imports =
+              (with config.m.plugins; [
+                blink-cmp
+                which-key
+                snacks
+                options
+                buffer-manager
+                flash
+                gitsigns
+                lsp
+                luasnip
+                todo-comments
+                treesitter
+                yazi
+                lazygit
+                sidekick
+                cord
+                hop
+                silicon
+                time-tracker
+                supermaven
+                trouble
+              ])
+              ++ (with config.m.visual; [
+                highlight-colors
+                dashboard
+                dressing
+                extra-visual
+                neoscroll
+                fidget
+                noice
+                lualine
+                forte
+              ])
+              ++ [ config.m.nixvim.core ];
+          };
+        };
       };
       formatter = pkgs.nixfmt-rs;
     };

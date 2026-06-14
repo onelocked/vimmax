@@ -4,7 +4,7 @@
     {
       lib,
       pkgs,
-      theme,
+      config,
       ...
     }:
     let
@@ -115,7 +115,9 @@
         ''
           vim.opt.whichwrap:append("<>[]hl")
           vim.opt.listchars:append("space:·")
-          vim.api.nvim_set_hl(0, "Whitespace", { fg = "${if theme == "dark" then "#3d3050" else "#aaaaaa"}" })
+          vim.api.nvim_set_hl(0, "Whitespace", { fg = "${
+            if config.vimmax.theme == "light" then "#aaaaaa" else "#434343"
+          }" })
 
           -- below part set's the Diagnostic icons/colors
           local signs = {

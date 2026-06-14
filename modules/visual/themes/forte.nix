@@ -1,36 +1,16 @@
 {
-  m.visual.catppuccin =
-    { lib, ... }:
+  m.visual.forte =
+    { lib, config, ... }:
     let
       inherit (lib.nixvim) mkRaw;
+      cfg = config.vimmax;
     in
     {
       colorschemes.catppuccin = {
         enable = true;
         settings = {
           color_overrides = {
-            mocha = {
-              rosewater = "#e8c4d8";
-              flamingo = "#d4b0d8";
-              red = "#f4a8b8";
-              maroon = "#d4a8c0";
-              pink = "#c8b0e8";
-              peach = "#f2b8a0";
-              yellow = "#f6d88a";
-              mauve = "#ff7a6b";
-              green = "#b8db8c";
-              teal = "#7cb8d4";
-              sky = "#8fd4b5";
-              sapphire = "#a8c8f0";
-              blue = "#7d75c0";
-              lavender = "#c5c0ff";
-              text = "#cfd3e7";
-              subtext1 = "#b7bdd6";
-              subtext0 = "#8c92aa";
-              overlay2 = "#eba0ac";
-              overlay1 = "#454545";
-              overlay0 = "#787878";
-            };
+            mocha = if cfg.theme == "light" then cfg.light else cfg.dark;
           };
           highlight_overrides = {
             mocha =
@@ -41,6 +21,32 @@
                     Comment = { fg = "#666666", style = { "bold", "italic" } },
                     ["@comment"] = { fg = "#666666", style = { "bold", "italic" } },
                     ["@comment.documentation"] = { fg = "#666666", style = { "bold", "italic" } },
+
+                    -- Fix Line Numbers
+                    LineNr = { fg = colors.overlay1 },
+                    CursorLineNr = { fg = colors.text, style = { "bold" } },
+                    CursorLine = { bg = "#bbbbbb" },
+
+                    -- Fix Git Signs
+                    GitSignsAdd = { fg = colors.green, bg = "NONE" },
+                    GitSignsChange = { fg = colors.yellow, bg = "NONE" },
+                    GitSignsDelete = { fg = colors.red, bg = "NONE" },
+                    SignColumn = { bg = "NONE" },
+
+                    -- Classic Mac OS Selection Blue
+                    Visual = { bg = "#6699FF", fg = "#ffffff", style = { "bold" } },
+                    -- Map keys (flake, options, mkKey) to Violet
+                    ["@property"] = { fg = colors.lavender },
+                    ["@variable.member"] = { fg = colors.lavender },
+
+                    -- Map functions (mkOption) to a stark, bold Cyan/Blue
+                    ["@function"] = { fg = colors.sapphire, style = { "bold" } },
+                    ["@function.call"] = { fg = colors.sapphire, style = { "bold" } },
+
+                    -- Pop built-ins/types with high-contrast Orange
+                    ["@function.builtin"] = { fg = colors.peach, style = { "bold" } },
+                    ["@type.builtin"] = { fg = colors.peach },
+
                   }
                 end
               '';
