@@ -1,5 +1,5 @@
 {
-  m.visual.neoscroll =
+  exo.visual =
     { pkgs, ... }:
     {
       extraPlugins = with pkgs.vimPlugins; [

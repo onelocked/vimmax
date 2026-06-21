@@ -1,10 +1,9 @@
-{ self, ... }:
 {
-  m.plugins.snacks =
-    { lib, ... }:
+  exo.mods =
+    { config, lib, ... }:
     let
       inherit (lib.nixvim) listToUnkeyedAttrs mkRaw;
-      inherit (self.mkKey) mkKeymap wKeyObj;
+      inherit (config.vimmax.mkKey) mkKeymap wKeyObj;
     in
     {
       plugins.snacks = {
@@ -214,7 +213,7 @@
           '';
         }
       ];
-      wKeyList = [
+      vimmax.wKeyList = [
         (wKeyObj [
           "<leader>:"
           ""

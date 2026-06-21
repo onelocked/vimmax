@@ -1,12 +1,12 @@
 {
-  m.plugins.which-key =
+  exo.mods =
     { config, ... }:
     {
 
       plugins = {
         which-key = {
           enable = true;
-          settings.spec = config.wKeyList;
+          settings.spec = config.vimmax.wKeyList;
           settings.preset = "helix";
         };
         tmux-navigator.enable = false;

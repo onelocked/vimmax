@@ -1,5 +1,5 @@
 {
-  m.visual.noice = {
+  exo.visual = {
     plugins = {
       noice = {
         enable = true;

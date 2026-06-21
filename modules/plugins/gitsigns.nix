@@ -1,16 +1,21 @@
-{ self, ... }:
 {
-  m.plugins.gitsigns =
-    { lib, pkgs, ... }:
+  exo.mods =
+    {
+      lib,
+      pkgs,
+      config,
+      icons,
+      ...
+    }:
     let
-      inherit (self.mkKey) mkKeymap;
+      inherit (config.vimmax.mkKey) mkKeymap;
       inherit (lib.nixvim) mkRaw;
-      inherit (self.icons.ui) LineLeft Triangle BoldLineLeft;
     in
     {
       extraPlugins = [ pkgs.vimPlugins.gitsigns-nvim ];
 
-      extraConfigLua = # lua
+      extraConfigLua =
+        with icons.ui; # lua
         ''
           require('gitsigns').setup({
             current_line_blame = true,

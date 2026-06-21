@@ -1,6 +1,5 @@
 {
-  m.visual.fidget = {
-
+  exo.visual = {
     plugins = {
       fidget = {
         enable = true;
@@ -14,6 +13,5 @@
         };
       };
     };
-
   };
 }

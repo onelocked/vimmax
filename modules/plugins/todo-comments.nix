@@ -1,5 +1,5 @@
 {
-  m.plugins.todo-comments = {
+  exo.mods = {
 
     plugins.todo-comments = {
       enable = true;

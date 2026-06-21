@@ -1,5 +1,5 @@
 {
-  m.visual.extra-visual =
+  exo.visual =
     { pkgs, ... }:
     {
 

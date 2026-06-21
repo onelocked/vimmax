@@ -1,8 +1,8 @@
 {
-  m.plugins.lsp = {
+  exo.mods = {
     plugins = {
       lsp.servers.nushell = {
-        enable = true;
+        enable = false;
       };
     };
   };

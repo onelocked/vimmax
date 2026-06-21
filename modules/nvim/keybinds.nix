@@ -1,8 +1,8 @@
-{ self, ... }:
 {
-  m.nixvim.core =
+  exo.core =
+    { config, ... }:
     let
-      inherit (self.mkKey) mkKeymap wKeyObj;
+      inherit (config.vimmax.mkKey) mkKeymap wKeyObj;
       v = [
         (mkKeymap "v" "<a-j>" ":m '>+1<cr>gv-gv" "Move Selected Line Down")
         (mkKeymap "v" "<a-k>" ":m '<lt>-2<CR>gv-gv" "Move Selected Line Up")
@@ -34,7 +34,7 @@
       keymaps = insert ++ normal ++ v;
 
       # This is list to present icon on which key
-      wKeyList = [
+      vimmax.wKeyList = [
         (wKeyObj [
           "<leader>A"
           ""

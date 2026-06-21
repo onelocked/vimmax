@@ -1,5 +1,5 @@
 {
-  m.plugins.supermaven =
+  exo.mods =
     { pkgs, ... }:
     {
       extraPlugins = [ pkgs.vimPlugins.supermaven-nvim ];

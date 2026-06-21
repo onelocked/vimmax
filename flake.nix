@@ -1,15 +1,16 @@
 {
-  description = "nixvimmaxxing config by onelock";
-
   outputs =
-    inputs@{ flake-parts, ... }:
-    flake-parts.lib.mkFlake { inherit inputs; } {
+    inputs:
+    inputs.flake-parts.lib.evalFlakeModule { inherit inputs; } {
       imports =
         with inputs.nixpkgs.lib;
-        ./modules
-        |> fileset.fileFilter (file: file.hasExt "nix" && !hasPrefix "_" file.name)
+        [ ./modules ]
+        |> map (fileset.fileFilter (file: file.hasExt "nix" && !hasPrefix "_" file.name))
+        |> fileset.unions
         |> fileset.toList;
-    };
+      _module.args.rootPath = ./.;
+    }
+    |> (eval: { inherit eval; } // eval.config.processedFlake);
 
   inputs = {
     nixpkgs.url = "https://channels.nixos.org/nixos-unstable/nixexprs.tar.xz";

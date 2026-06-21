@@ -1,5 +1,5 @@
 {
-  m.plugins.blink-cmp =
+  exo.mods =
     { pkgs, ... }:
     {
       extraPlugins = with pkgs.vimPlugins; [

@@ -1,5 +1,5 @@
 {
-  m.plugins.time-tracker =
+  exo.mods =
     { pkgs, ... }:
     {
       extraPackages = [ pkgs.sqlite ];

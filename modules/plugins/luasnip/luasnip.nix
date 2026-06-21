@@ -1,5 +1,5 @@
 {
-  m.plugins.luasnip = {
+  exo.mods = {
     plugins = {
       luasnip = {
         enable = true;

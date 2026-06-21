@@ -1,5 +1,5 @@
 {
-  m.plugins.lsp = {
+  exo.mods = {
     plugins = {
       render-markdown = {
         enable = true;

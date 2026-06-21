@@ -1,9 +1,13 @@
-{ self, ... }:
 {
-  m.plugins.silicon =
-    { pkgs, lib, ... }:
+  exo.mods =
+    {
+      pkgs,
+      lib,
+      config,
+      ...
+    }:
     let
-      inherit (self.mkKey) mkKeymap;
+      inherit (config.vimmax.mkKey) mkKeymap;
     in
     {
       extraPlugins = [ pkgs.vimPlugins.nvim-silicon ];

@@ -1,5 +1,5 @@
 {
-  m.plugins.treesitter =
+  exo.mods =
     { pkgs, ... }:
     {
       plugins = {

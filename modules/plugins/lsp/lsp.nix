@@ -1,9 +1,8 @@
-{ self, ... }:
 {
-  m.plugins.lsp =
-    { lib, ... }:
+  exo.mods =
+    { lib, config, ... }:
     let
-      inherit (self.mkKey) mkKeymap wKeyObj;
+      inherit (config.vimmax.mkKey) mkKeymap wKeyObj;
     in
     {
 
@@ -68,7 +67,7 @@
               '';
         }
       ];
-      wKeyList = [
+      vimmax.wKeyList = [
         (wKeyObj [
           "<leader>l"
           "󰿘"

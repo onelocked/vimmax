@@ -1,10 +1,14 @@
-{ self, ... }:
 {
-  m.plugins.buffer-manager =
-    { pkgs, lib, ... }:
+  exo.mods =
+    {
+      pkgs,
+      lib,
+      config,
+      ...
+    }:
 
     let
-      inherit (self.mkKey) mkKeymap wKeyObj;
+      inherit (config.vimmax.mkKey) mkKeymap wKeyObj;
       inherit (lib.nixvim) mkRaw;
     in
     {
@@ -33,7 +37,7 @@
         };
       };
 
-      wKeyList = [
+      vimmax.wKeyList = [
         (wKeyObj [
           "<leader>b"
           ""

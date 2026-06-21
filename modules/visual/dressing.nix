@@ -1,5 +1,5 @@
 {
-  m.visual.dressing = {
+  exo.visual = {
     plugins = {
       dressing = {
         enable = true;

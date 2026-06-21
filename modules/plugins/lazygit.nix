@@ -1,5 +1,5 @@
 {
-  m.plugins.lazygit =
+  exo.mods =
     { pkgs, ... }:
     {
       extraPlugins = [ pkgs.vimPlugins.lazygit-nvim ];

@@ -1,6 +1,5 @@
-{ self, ... }:
 {
-  m.plugins.hop =
+  exo.mods =
     { config, lib, ... }:
     {
       extraConfigLua = ''
@@ -26,10 +25,10 @@
         };
       };
       keymaps =
-        with self.mkKey;
-        map (mode: mkKeymap mode "<leader>hw" "<cmd>HopWord<cr>" "Hop to Word") [
-          "n"
-          "v"
-        ];
+        map (mode: config.vimmax.mkKey.mkKeymap mode "<leader>hw" "<cmd>HopWord<cr>" "Hop to Word")
+          [
+            "n"
+            "v"
+          ];
     };
 }

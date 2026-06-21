@@ -1,5 +1,5 @@
 {
-  m.plugins.yazi =
+  exo.mods =
     { pkgs, ... }:
     {
       extraPlugins = [ pkgs.vimPlugins.yazi-nvim ];

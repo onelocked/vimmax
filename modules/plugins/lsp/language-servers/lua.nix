@@ -1,5 +1,5 @@
 {
-  m.plugins.lsp = {
+  exo.mods = {
     plugins = {
       lsp.servers.lua_ls = {
         enable = true;

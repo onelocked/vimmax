@@ -1,5 +1,5 @@
 {
-  m.plugins.conform =
+  exo.mods =
     { pkgs, lib, ... }:
     {
       plugins = {

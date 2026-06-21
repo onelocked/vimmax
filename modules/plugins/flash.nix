@@ -1,12 +1,10 @@
-{ self, ... }:
 {
-  m.plugins.flash =
-    { lib, ... }:
+  exo.mods =
+    { lib, config, ... }:
     let
-      inherit (self.mkKey) mkKeymap;
+      inherit (config.vimmax.mkKey) mkKeymap;
       inherit (lib.nixvim) mkRaw;
     in
-
     {
       plugins.flash = {
         enable = true;

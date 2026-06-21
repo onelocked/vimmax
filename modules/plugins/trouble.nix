@@ -1,5 +1,5 @@
 {
-  m.plugins.trouble =
+  exo.mods =
     { pkgs, ... }:
     {
       extraPlugins = [ pkgs.vimPlugins.trouble-nvim ];

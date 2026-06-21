@@ -1,5 +1,5 @@
 {
-  m.visual.highlight-colors = {
+  exo.visual = {
     plugins.highlight-colors = {
       enable = true;
       settings = {

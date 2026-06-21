@@ -1,16 +1,14 @@
-{ self, ... }:
 {
-  m.nixvim.core =
+  exo.core =
     {
       lib,
       pkgs,
       config,
+      icons,
       ...
     }:
-    let
-      inherit (self) icons;
-    in
     {
+      _module.args = { inherit (lib.nixvim) mkRaw; };
       luaLoader.enable = false;
       dependencies = {
         gcc.enable = true;
@@ -26,7 +24,7 @@
         package = pkgs.wl-clipboard;
       };
       globals = {
-        mapleader = self.onevix.leader;
+        mapleader = " ";
         floating_window_options.border = "rounded";
       };
 
@@ -110,8 +108,7 @@
       ];
 
       extraLuaPackages = lp: with lp; [ luarocks ];
-      extraConfigLua =
-        with icons.diagnostics; # lua
+      extraConfigLua = # lua
         ''
           vim.opt.whichwrap:append("<>[]hl")
           vim.opt.listchars:append("space:·")
@@ -121,10 +118,10 @@
 
           -- below part set's the Diagnostic icons/colors
           local signs = {
-            Hint = "${BoldHint}",
-            Info = "${BoldInformation}",
-            Warn = "${BoldWarning}",
-            Error = "${BoldError}",
+            Hint = "${icons.diagnostics.BoldHint}",
+            Info = "${icons.diagnostics.BoldInformation}",
+            Warn = "${icons.diagnostics.BoldWarning}",
+            Error = "${icons.diagnostics.BoldError}",
           }
 
           for type, icon in pairs(signs) do

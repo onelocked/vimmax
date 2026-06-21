@@ -1,70 +1,48 @@
 {
   inputs,
-  lib,
   config,
+  lib,
   ...
 }:
 {
-  imports = [
-    inputs.flake-parts.flakeModules.modules
-    (lib.mkAliasOptionModule [ "m" ] [ "flake" "modules" ])
-  ];
-  systems = import inputs.systems;
-
-  perSystem =
-    {
-      system,
-      pkgs,
-      inputs',
-      ...
-    }:
-    {
-      _module.args.pkgs = import inputs.nixpkgs {
-        inherit system;
-        config.allowUnfree = true;
-      };
-      packages = {
-        default = inputs'.nixvim.legacyPackages.makeNixvimWithModule {
-          inherit pkgs;
-          module = {
-            imports =
-              (with config.m.plugins; [
-                blink-cmp
-                which-key
-                snacks
-                options
-                buffer-manager
-                flash
-                gitsigns
-                lsp
-                luasnip
-                todo-comments
-                treesitter
-                yazi
-                lazygit
-                sidekick
-                cord
-                hop
-                silicon
-                time-tracker
-                supermaven
-                trouble
-              ])
-              ++ (with config.m.visual; [
-                highlight-colors
-                dashboard
-                dressing
-                extra-visual
-                neoscroll
-                fidget
-                noice
-                lualine
-                forte
-              ])
-              ++ [ config.m.nixvim.core ];
+  config = {
+    systems = import inputs.systems;
+    perSystem =
+      {
+        system,
+        pkgs,
+        inputs',
+        ...
+      }:
+      {
+        _module.args.pkgs = import inputs.nixpkgs {
+          inherit system;
+          config.allowUnfree = true;
+        };
+        formatter = pkgs.nixfmt-rs;
+        packages = {
+          default = inputs'.nixvim.legacyPackages.makeNixvimWithModule {
+            inherit pkgs;
+            module = {
+              imports = with config.exo; [
+                core
+                mods
+                visual
+              ];
+            };
           };
         };
       };
-      formatter = pkgs.nixfmt-rs;
+  };
+  options.exo = {
+    mods = lib.mkOption {
+      type = lib.types.deferredModule;
     };
+    visual = lib.mkOption {
+      type = lib.types.deferredModule;
+    };
+    core = lib.mkOption {
+      type = lib.types.deferredModule;
+    };
+  };
 }

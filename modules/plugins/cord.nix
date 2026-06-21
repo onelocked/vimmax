@@ -1,5 +1,5 @@
 {
-  m.plugins.cord = {
+  exo.mods = {
     plugins.cord = {
       enable = true;
       settings = {
@@ -22,6 +22,5 @@
         };
       };
     };
-
   };
 }

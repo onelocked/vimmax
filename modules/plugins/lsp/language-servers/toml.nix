@@ -1,5 +1,5 @@
 {
-  m.plugins.lsp =
+  exo.mods =
     { pkgs, lib, ... }:
     {
       plugins.lsp.servers.taplo.enable = true;

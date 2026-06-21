@@ -1,5 +1,5 @@
 {
-  m.plugins.lsp =
+  exo.mods =
     { lib, pkgs, ... }:
     {
       plugins.conform-nvim = {

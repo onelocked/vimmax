@@ -1,14 +1,13 @@
 {
-  m.visual.dashboard =
+  exo.visual =
     {
-      lib,
       pkgs,
       config,
+      mkRaw,
       ...
     }:
     let
       chafa = "${pkgs.chafa}/bin/chafa";
-      inherit (lib.nixvim) mkRaw;
       retro-image = pkgs.fetchurl {
         url = "https://raw.githubusercontent.com/onelocked/images/refs/heads/main/neovim/retro.jpg";
         sha256 = "sha256-c9xwiFTicLGnIlUwE5xaHXGr15QK96uWQWCiOIR82as=";

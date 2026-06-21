@@ -1,7 +1,7 @@
 {
-  m.plugins.lsp = {
+  exo.mods = {
     plugins.rustaceanvim = {
-      enable = true;
+      enable = false;
     };
   };
 }
