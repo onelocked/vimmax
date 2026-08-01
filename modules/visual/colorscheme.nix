@@ -28,27 +28,29 @@
             sl_fg                = "${c.base05}",
             sl_mode_n            = "${c.base0D}",
             sl_mode_i            = "${c.base0B}",
-            sl_mode_v            = "${c.base0E}",
+            sl_mode_v            = "${c.base11}",
             sl_mode_c            = "${c.base09}",
-            sl_mode_t            = "${c.base0C}",
+            sl_mode_t            = "${c.base14}",
             comment              = "${c.base03}",
-            keyword              = "${c.base0E}",
+            keyword              = "${c.base08}",
             string               = "${c.base0B}",
-            fn                   = "${c.base0D}",
-            type                 = "${c.base0A}",
+            fn                   = "${c.base12}",
+            type                 = "${c.base14}",
             constant             = "${c.base09}",
-            number               = "${c.base09}",
-            operator             = "${c.base05}",
-            parameter            = "${c.base08}",
+            number               = "${c.base16}",
+            operator             = "${c.base10}",
+            parameter            = "${c.base0E}",
             builtin              = "${c.base0C}",
             special              = "${c.base0F}",
-            float_bg             = "${c.base01}",
-            float_border         = "${c.base0D}",
+            variable             = "${c.base0D}",
+            float_bg             = "${c.base00}",
+            float_border         = "${c.base17}",
             pmenu_sel            = "${c.base02}",
             error                = "${c.base08}",
-            warning              = "${c.base0A}",
-            info                 = "${c.base0D}",
-            hint                 = "${c.base0C}",
+            warning              = "${c.base09}",
+            info                 = "${c.base14}",
+            hint                 = "${c.base15}",
+            dashboard            = "${c.base17}",
           }
 
           -- ── Editor ───────────────────────────────────────────────────────────────────
@@ -126,7 +128,7 @@
           vim.api.nvim_set_hl(0, "String",          { fg = c.string })
           vim.api.nvim_set_hl(0, "Character",       { fg = c.string })
           vim.api.nvim_set_hl(0, "Function",        { fg = c.fn })
-          vim.api.nvim_set_hl(0, "Identifier",      { fg = c.fg })
+          vim.api.nvim_set_hl(0, "Identifier",      { fg = c.variable })
           vim.api.nvim_set_hl(0, "Type",            { fg = c.type })
           vim.api.nvim_set_hl(0, "StorageClass",    { fg = c.type })
           vim.api.nvim_set_hl(0, "Structure",       { fg = c.type })
@@ -177,12 +179,12 @@
           vim.api.nvim_set_hl(0, "@constant.builtin",       { fg = c.constant,         bold = true })
           vim.api.nvim_set_hl(0, "@constant.macro",         { fg = c.constant })
           vim.api.nvim_set_hl(0, "@operator",               { link = "Operator" })
-          vim.api.nvim_set_hl(0, "@variable",               { fg = c.fg })
+          vim.api.nvim_set_hl(0, "@variable",               { fg = c.variable })
           vim.api.nvim_set_hl(0, "@variable.builtin",       { fg = c.builtin })
           vim.api.nvim_set_hl(0, "@variable.parameter",     { fg = c.parameter })
-          vim.api.nvim_set_hl(0, "@variable.member",        { fg = c.fg })
-          vim.api.nvim_set_hl(0, "@field",                  { fg = c.fg })
-          vim.api.nvim_set_hl(0, "@property",               { fg = c.fg })
+          vim.api.nvim_set_hl(0, "@variable.member",        { fg = c.variable })
+          vim.api.nvim_set_hl(0, "@field",                  { fg = c.variable })
+          vim.api.nvim_set_hl(0, "@property",               { fg = c.variable })
           vim.api.nvim_set_hl(0, "@namespace",              { fg = c.type })
           vim.api.nvim_set_hl(0, "@module",                 { fg = c.type })
           vim.api.nvim_set_hl(0, "@punctuation.bracket",    { fg = c.fg })
@@ -211,6 +213,25 @@
           vim.api.nvim_set_hl(0, "IblIndent",               { fg = c.border })
           vim.api.nvim_set_hl(0, "IblScope",                { fg = c.line_nr })
           vim.api.nvim_set_hl(0, "IndentBlanklineChar",      { fg = c.border })
+
+          -- ── Snacks Indent ─────────────────────────────────────────────────────────────
+          vim.api.nvim_set_hl(0, "SnacksIndent",            { fg = c.border })
+          vim.api.nvim_set_hl(0, "SnacksIndentScope",       { fg = c.line_nr })
+
+          -- ── Snacks Dashboard ───────────────────────────────────────────────────────
+          vim.api.nvim_set_hl(0, "SnacksDashboardDesc",      { fg = c.dashboard })
+          vim.api.nvim_set_hl(0, "SnacksDashboardIcon",      { fg = c.dashboard })
+          vim.api.nvim_set_hl(0, "SnacksDashboardKey",       { fg = c.dashboard })
+          vim.api.nvim_set_hl(0, "SnacksDashboardTitle",     { fg = c.dashboard,        bold = true })
+          vim.api.nvim_set_hl(0, "SnacksDashboardFile",      { fg = c.dashboard })
+
+          -- ── Snacks Picker ──────────────────────────────────────────────────────────
+          vim.api.nvim_set_hl(0, "SnacksPickerBorder",        { fg = c.dashboard,        bg = c.float_bg })
+          vim.api.nvim_set_hl(0, "SnacksPickerInputBorder",   { fg = c.dashboard,        bg = c.float_bg })
+          vim.api.nvim_set_hl(0, "SnacksPickerListBorder",    { fg = c.dashboard,        bg = c.float_bg })
+          vim.api.nvim_set_hl(0, "SnacksPickerPreviewBorder", { fg = c.dashboard,        bg = c.float_bg })
+          vim.api.nvim_set_hl(0, "SnacksPickerTitle",         { fg = c.dashboard,        bg = c.float_bg,  bold = true })
+          vim.api.nvim_set_hl(0, "SnacksPickerInputTitle",    { fg = c.dashboard,        bg = c.float_bg,  bold = true })
 
           -- ── nvim-cmp ─────────────────────────────────────────────────────────────────
           vim.api.nvim_set_hl(0, "CmpItemAbbr",             { fg = c.fg })
@@ -294,7 +315,7 @@
       options.vimmax = {
         theme = lib.mkOption {
           type = lib.types.str;
-          default = "dark";
+          default = "light";
           description = "The theme to use for neovim";
         };
         light = lib.mkOption {
@@ -304,32 +325,30 @@
             base01 = "#e0d8ce";
             base02 = "#C4B09E";
             base03 = "#8a8078";
-
-            # Foregrounds (Grey
+            # Foregrounds (Grey)
             base04 = "#4a4640";
             base05 = "#1c1a18";
             base06 = "#1c1a18";
             base07 = "#000000";
-
             # Accents
-            base08 = "#b04030";
-            base09 = "#A65D3C";
-            base0A = "#7a6a50";
-            base0B = "#5C7457";
-            base0C = "#5a4a30";
+            base08 = "#D32F2F";
+            base09 = "#D84315";
+            base0A = "#B07D00";
+            base0B = "#278536";
+            base0C = "#00897B";
             base0D = "#8E4D2F";
-            base0E = "#9a6830";
-            base0F = "#8B7D6F";
+            base0E = "#6A1B9A";
+            base0F = "#1565C0";
 
             # Extended (Brights
-            base10 = "#FFF8F6";
-            base11 = "#FEF0EF";
-            base12 = "#fcd0c0";
-            base13 = "#ece0cc";
-            base14 = "#c0e8b8";
-            base15 = "#c8c0b4";
-            base16 = "#d8e4f0";
-            base17 = "#f8dcc0";
+            base10 = "#C2185B";
+            base11 = "#D81B60";
+            base12 = "#4527A0";
+            base13 = "#283593";
+            base14 = "#0277BD";
+            base15 = "#00695C";
+            base16 = "#558B2F";
+            base17 = "#4E342E";
           };
         };
         dark = lib.mkOption {
