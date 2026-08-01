@@ -1,6 +1,9 @@
 {
   exo.visual =
-    { pkgs, ... }:
+    { pkgs, config, ... }:
+    let
+      c = config.vimmax.${config.vimmax.theme};
+    in
     {
       extraPlugins = [ pkgs.vimPlugins.lualine-nvim ];
       extraConfigLua = # lua
@@ -20,16 +23,50 @@
             return symbols
           end
 
+          local custom_theme = {
+            normal = {
+              a = { fg = "${c.base01}", bg = "${c.base0D}", gui = "bold" },
+              b = { fg = "${c.base05}", bg = "${c.base02}" },
+              c = { fg = "${c.base05}", bg = "${c.base00}" },
+            },
+            insert = {
+              a = { fg = "${c.base01}", bg = "${c.base0B}", gui = "bold" },
+              b = { fg = "${c.base05}", bg = "${c.base02}" },
+              c = { fg = "${c.base05}", bg = "${c.base00}" },
+            },
+            visual = {
+              a = { fg = "${c.base01}", bg = "${c.base0E}", gui = "bold" },
+              b = { fg = "${c.base05}", bg = "${c.base02}" },
+              c = { fg = "${c.base05}", bg = "${c.base00}" },
+            },
+            replace = {
+              a = { fg = "${c.base01}", bg = "${c.base08}", gui = "bold" },
+              b = { fg = "${c.base05}", bg = "${c.base02}" },
+              c = { fg = "${c.base05}", bg = "${c.base00}" },
+            },
+            command = {
+              a = { fg = "${c.base01}", bg = "${c.base09}", gui = "bold" },
+              b = { fg = "${c.base05}", bg = "${c.base02}" },
+              c = { fg = "${c.base05}", bg = "${c.base00}" },
+            },
+            inactive = {
+              a = { fg = "${c.base03}", bg = "${c.base00}" },
+              b = { fg = "${c.base03}", bg = "${c.base00}" },
+              c = { fg = "${c.base03}", bg = "${c.base00}" },
+            },
+          }
+
           require('lualine').setup({
             options = {
               icons_enabled = true,
-              theme = "auto",
+              theme = custom_theme,
               component_separators = {
                 left = "│",
                 right = "│",
               },
               section_separators = {
                 left = "▌",
+                right = "",
               },
               disabled_filetypes = {
                 statusline = { "alpha", "dashboard", "snacks_dashboard" },

@@ -30,9 +30,32 @@
         };
         bufferline = {
           enable = true;
-          settings.options = {
-            diagnostics = "nvim_lsp";
-            always_show_bufferline = false;
+          settings = {
+            options = {
+              diagnostics = "nvim_lsp";
+              always_show_bufferline = false;
+              themable = false;
+            };
+            highlights = {
+              fill = { bg = "NONE"; };
+              background = { bg = "NONE"; };
+              buffer_visible = { bg = "NONE"; };
+              buffer_selected = { bg = "NONE"; bold = true; };
+              close_button = { bg = "NONE"; };
+              close_button_visible = { bg = "NONE"; };
+              close_button_selected = { bg = "NONE"; };
+              separator = { bg = "NONE"; };
+              separator_visible = { bg = "NONE"; };
+              separator_selected = { bg = "NONE"; };
+              indicator_selected = { bg = "NONE"; fg = config.vimmax.${config.vimmax.theme}.base08; };
+              indicator_visible = { bg = "NONE"; };
+              modified = { bg = "NONE"; };
+              modified_visible = { bg = "NONE"; };
+              modified_selected = { bg = "NONE"; };
+              duplicate = { bg = "NONE"; };
+              duplicate_visible = { bg = "NONE"; };
+              duplicate_selected = { bg = "NONE"; };
+            };
           };
         };
       };
