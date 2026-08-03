@@ -26,7 +26,7 @@
             tabline_active_fg    = "${c.base05}",
             sl_bg                = "${c.base01}",
             sl_fg                = "${c.base05}",
-            sl_mode_n            = "${c.base0D}",
+            sl_mode_n            = "${c.base0F}",
             sl_mode_i            = "${c.base0B}",
             sl_mode_v            = "${c.base11}",
             sl_mode_c            = "${c.base09}",
@@ -202,9 +202,10 @@
           vim.api.nvim_set_hl(0, "GitSignsCurrentLineBlame",{ fg = c.line_nr,          italic = true })
 
           -- ── Which-key ────────────────────────────────────────────────────────────────
-          vim.api.nvim_set_hl(0, "WhichKey",                { fg = c.keyword })
-          vim.api.nvim_set_hl(0, "WhichKeyGroup",           { fg = c.type })
+          vim.api.nvim_set_hl(0, "WhichKey",                { fg = c.variable })
+          vim.api.nvim_set_hl(0, "WhichKeyGroup",           { fg = c.fn })
           vim.api.nvim_set_hl(0, "WhichKeyDesc",            { fg = c.fg })
+          vim.api.nvim_set_hl(0, "WhichKeySeparator",       { fg = c.fg })
           vim.api.nvim_set_hl(0, "WhichKeyBorder",          { fg = c.float_border,     bg = c.float_bg })
           vim.api.nvim_set_hl(0, "WhichKeyFloat",           { bg = c.float_bg })
           vim.api.nvim_set_hl(0, "WhichKeyValue",           { fg = c.comment })
@@ -367,24 +368,24 @@
             base07 = "#f0f2fa";
 
             # Accents
-            base08 = "#f4a8b8";
+            base08 = "#ff7a6b";
             base09 = "#f2b8a0";
             base0A = "#f6d88a";
             base0B = "#b8db8c";
             base0C = "#7cb8d4";
             base0D = "#c5c0ff";
-            base0E = "#c8b0e8";
+            base0E = "#d4a8c0";
             base0F = "#7d75c0";
 
             # Extended
-            base10 = "#130f18";
-            base11 = "#0c0a10";
-            base12 = "#ff7a6b";
+            base10 = "#8fd4b5";
+            base11 = "#c8b0e8";
+            base12 = "#a8c8f0";
             base13 = "#f6d88a";
-            base14 = "#c8e09c";
-            base15 = "#8fd4b5";
-            base16 = "#a8c8f0";
-            base17 = "#e8c4d8";
+            base14 = "#f6d88a";
+            base15 = "#7cb8d4";
+            base16 = "#f2b8a0";
+            base17 = "#7d75c0";
           };
         };
       };
