@@ -35,7 +35,7 @@
               function(event)
                   local client = vim.api.nvim_get_chan_info(vim.v.event.chan).client
                   if client ~= nil and client.name == "Firenvim" then
-                      local ok, _ = pcall(vim.cmd, "colorscheme sorbet")
+                      vim.o.guifont = "Maple Mono NF ExtraBold"
 
                       vim.o.laststatus = 0
                       vim.o.showtabline = 0
