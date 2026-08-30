@@ -110,6 +110,9 @@
       extraLuaPackages = lp: with lp; [ luarocks ];
       extraConfigLua = # lua
         ''
+          vim.opt.title = true
+          vim.opt.titlestring = "nvim - %t%( %M%)"
+
           vim.opt.whichwrap:append("<>[]hl")
           vim.opt.listchars:append("space:·")
           vim.api.nvim_set_hl(0, "Whitespace", { fg = "${
