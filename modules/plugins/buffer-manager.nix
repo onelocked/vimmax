@@ -1,9 +1,11 @@
 {
+  tack.inputs.fetch.buffer-manager = "gh:j-morano/buffer_manager.nvim";
   exo.mods =
     {
       pkgs,
       lib,
       config,
+      inputs,
       ...
     }:
 
@@ -15,12 +17,7 @@
       extraPlugins = [
         (pkgs.vimUtils.buildVimPlugin {
           name = "buffer-manager";
-          src = pkgs.fetchFromGitHub {
-            owner = "j-morano";
-            repo = "buffer_manager.nvim";
-            rev = "a0ac2db39c8bd4a2b6ca897f38c88770f90d9323";
-            hash = "sha256-dTv5S2PbFEsyETpvf8urH9nHzgc48aMicX9+VH9DKQk=";
-          };
+          src = inputs.buffer-manager;
           dependencies = [ pkgs.vimPlugins.plenary-nvim ];
         })
       ];
@@ -37,24 +34,62 @@
               themable = false;
             };
             highlights = {
-              fill = { bg = "NONE"; };
-              background = { bg = "NONE"; };
-              buffer_visible = { bg = "NONE"; };
-              buffer_selected = { bg = "NONE"; bold = true; };
-              close_button = { bg = "NONE"; };
-              close_button_visible = { bg = "NONE"; };
-              close_button_selected = { bg = "NONE"; };
-              separator = { bg = "NONE"; };
-              separator_visible = { bg = "NONE"; };
-              separator_selected = { bg = "NONE"; };
-              indicator_selected = { bg = "NONE"; fg = config.vimmax.${config.vimmax.theme}.base08; };
-              indicator_visible = { bg = "NONE"; };
-              modified = { bg = "NONE"; };
-              modified_visible = { bg = "NONE"; };
-              modified_selected = { bg = "NONE"; };
-              duplicate = { bg = "NONE"; };
-              duplicate_visible = { bg = "NONE"; };
-              duplicate_selected = { bg = "NONE"; };
+              fill = {
+                bg = "NONE";
+              };
+              background = {
+                bg = "NONE";
+              };
+              buffer_visible = {
+                bg = "NONE";
+              };
+              buffer_selected = {
+                bg = "NONE";
+                bold = true;
+              };
+              close_button = {
+                bg = "NONE";
+              };
+              close_button_visible = {
+                bg = "NONE";
+              };
+              close_button_selected = {
+                bg = "NONE";
+              };
+              separator = {
+                bg = "NONE";
+              };
+              separator_visible = {
+                bg = "NONE";
+              };
+              separator_selected = {
+                bg = "NONE";
+              };
+              indicator_selected = {
+                bg = "NONE";
+                fg = config.vimmax.${config.vimmax.theme}.base08;
+              };
+              indicator_visible = {
+                bg = "NONE";
+              };
+              modified = {
+                bg = "NONE";
+              };
+              modified_visible = {
+                bg = "NONE";
+              };
+              modified_selected = {
+                bg = "NONE";
+              };
+              duplicate = {
+                bg = "NONE";
+              };
+              duplicate_visible = {
+                bg = "NONE";
+              };
+              duplicate_selected = {
+                bg = "NONE";
+              };
             };
           };
         };

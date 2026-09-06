@@ -1,0 +1,42 @@
+{
+  "buffer-manager": {
+    "type": "github",
+    "owner": "j-morano",
+    "repo": "buffer_manager.nvim",
+    "rev": "a0ac2db39c8bd4a2b6ca897f38c88770f90d9323",
+    "narHash": "sha256-dTv5S2PbFEsyETpvf8urH9nHzgc48aMicX9+VH9DKQk=",
+    "lastModified": 1770227189
+  },
+  "nixpkgs": {
+    "type": "github",
+    "owner": "nixos",
+    "repo": "nixpkgs",
+    "rev": "c043004d1c6985732bcc1cbc5a9c9aecbbb4e0f0",
+    "narHash": "sha256-7QYjT2vHLuX9Z1pdxHXDKCbh1CR3D/2rywB9Tx0MPRg=",
+    "lastModified": 1788614874
+  },
+  "nixvim": {
+    "type": "github",
+    "owner": "nix-community",
+    "repo": "nixvim",
+    "rev": "41844750e55f17b1385d5b09ca7ade5f11f49506",
+    "narHash": "sha256-59BAfH0txPAZrPBF4QJqwvUWppD+ICrcjA1LZAmPnrQ=",
+    "lastModified": 1788190018
+  },
+  "systems": {
+    "type": "github",
+    "owner": "nix-systems",
+    "repo": "default",
+    "rev": "c29398b59d2048c4ab79345812849c9bd15e9150",
+    "narHash": "sha256-brhZ8DmuGtzkCYHJg4HEd602amKm89Y9ytsFZ5uWD1w=",
+    "lastModified": 1774449309
+  },
+  "tack": {
+    "type": "github",
+    "owner": "manic-systems",
+    "repo": "tack",
+    "rev": "cf3e7db8f404a9883c3271891aa64c6b17fc91d7",
+    "narHash": "sha256-Na9BZk4hCvzFT41tB7/VZlwpMzI2fg/ebHVkjRD+4UM=",
+    "lastModified": 1788244134
+  }
+}

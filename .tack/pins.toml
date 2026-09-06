@@ -1,0 +1,23 @@
+[all_follow]
+flake-compat = "flake-compat"
+flake-utils = "flake-utils"
+nixpkgs = "nixpkgs"
+rust-overlay = "rust-overlay"
+systems = "systems"
+treefmt-nix = "treefmt-nix"
+
+[inputs.buffer-manager]
+type = "fetch"
+url = "gh:j-morano/buffer_manager.nvim"
+
+[inputs.nixpkgs]
+url = "gh:nixos/nixpkgs/nixos-unstable"
+
+[inputs.nixvim]
+url = "gh:nix-community/nixvim"
+
+[inputs.tack]
+url = "gh:manic-systems/tack"
+
+[shorturls]
+gh = "github:{path}"
