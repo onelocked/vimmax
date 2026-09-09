@@ -22,19 +22,22 @@
           config.allowUnfree = true;
         };
         formatter = pkgs.nixfmt-rs;
-        packages = {
-          default =
-            (inputs.nixvim.lib.evalNixvim {
-              inherit system;
-              extraSpecialArgs = { inherit inputs; };
-              modules = with config.exo; [
-                core
-                mods
-                visual
-                { nixpkgs.source = inputs.nixpkgs; }
-              ];
-            }).config.build.package;
-        };
+        packages = lib.genAttrs [ "light" "dark" ] (
+          theme:
+          (inputs.nixvim.lib.evalNixvim {
+            inherit system;
+            extraSpecialArgs = { inherit inputs; };
+            modules = with config.exo; [
+              core
+              mods
+              visual
+              {
+                nixpkgs.source = inputs.nixpkgs;
+                vimmax.theme = theme;
+              }
+            ];
+          }).config.build.package
+        );
       };
   };
   options = {
