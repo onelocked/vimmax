@@ -6,6 +6,7 @@
       shorturls = {
         gh = "github:{path}";
       };
+      tack.recomposable = "true";
       all_follow = {
         nixpkgs = "nixpkgs";
         systems = "systems";
@@ -69,7 +70,7 @@
             )
           );
         tackConfig = {
-          inherit (config.tack) shorturls all_follow;
+          inherit (config.tack) shorturls all_follow tack;
           inputs = serialisedInputs;
         };
 
@@ -147,6 +148,11 @@
         };
 
         all_follow = lib.mkOption {
+          type = lib.types.attrsOf lib.types.str;
+          default = { };
+        };
+
+        tack = lib.mkOption {
           type = lib.types.attrsOf lib.types.str;
           default = { };
         };

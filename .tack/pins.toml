@@ -1,3 +1,6 @@
+[tack]
+recomposable = true
+
 [all_follow]
 flake-compat = "flake-compat"
 flake-utils = "flake-utils"
