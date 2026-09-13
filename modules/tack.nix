@@ -11,9 +11,11 @@
         nixpkgs = "nixpkgs";
         systems = "systems";
         flake-compat = "flake-compat";
+        flake-parts = "flake-parts";
         flake-utils = "flake-utils";
         rust-overlay = "rust-overlay";
         treefmt-nix = "treefmt-nix";
+        tack = "tack";
       };
     };
 
