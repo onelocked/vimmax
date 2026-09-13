@@ -1,12 +1,11 @@
-[tack]
-recomposable = true
-
 [all_follow]
 flake-compat = "flake-compat"
+flake-parts = "flake-parts"
 flake-utils = "flake-utils"
 nixpkgs = "nixpkgs"
 rust-overlay = "rust-overlay"
 systems = "systems"
+tack = "tack"
 treefmt-nix = "treefmt-nix"
 
 [inputs.buffer-manager]
@@ -24,3 +23,6 @@ url = "gh:manic-systems/tack"
 
 [shorturls]
 gh = "github:{path}"
+
+[tack]
+recomposable = true

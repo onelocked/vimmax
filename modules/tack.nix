@@ -6,7 +6,7 @@
       shorturls = {
         gh = "github:{path}";
       };
-      tack.recomposable = "true";
+      tack.recomposable = true;
       all_follow = {
         nixpkgs = "nixpkgs";
         systems = "systems";
@@ -155,7 +155,7 @@
         };
 
         tack = lib.mkOption {
-          type = lib.types.attrsOf lib.types.str;
+          type = lib.types.attrsOf lib.types.bool;
           default = { };
         };
 

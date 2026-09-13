@@ -1,9 +1,9 @@
 {
   outputs =
-    { self, ... }:
+    args@{ self, ... }:
     let
-      inputs = (import ./.tack) // {
-        inherit self;
+      inputs = (import ./.tack) {
+        overrides = args.tackOverrides or { };
       };
       inherit (inputs.nixpkgs) lib;
 

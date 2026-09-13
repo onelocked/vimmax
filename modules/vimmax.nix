@@ -11,17 +11,12 @@
       nixvim = "gh:nix-community/nixvim";
     };
     perSystem =
-      {
-        system,
-        pkgs,
-        ...
-      }:
+      { system, ... }:
       {
         _module.args.pkgs = import inputs.nixpkgs {
           inherit system;
           config.allowUnfree = true;
         };
-        formatter = pkgs.nixfmt-rs;
         packages = lib.genAttrs [ "light" "dark" ] (
           theme:
           (inputs.nixvim.lib.evalNixvim {
