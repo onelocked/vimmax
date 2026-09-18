@@ -4,11 +4,9 @@
       lib,
       pkgs,
       config,
-      icons,
       ...
     }:
     {
-      _module.args = { inherit (lib.nixvim) mkRaw; };
       luaLoader.enable = false;
       dependencies = {
         gcc.enable = true;
@@ -120,12 +118,12 @@
           }" })
 
           -- below part set's the Diagnostic icons/colors
-          local signs = {
-            Hint = "${icons.diagnostics.BoldHint}",
-            Info = "${icons.diagnostics.BoldInformation}",
-            Warn = "${icons.diagnostics.BoldWarning}",
-            Error = "${icons.diagnostics.BoldError}",
-          }
+           local signs = {
+             Hint = "",
+             Info = "",
+             Warn = "",
+             Error = "",
+           }
 
           for type, icon in pairs(signs) do
             local hl = "DiagnosticSign" .. type

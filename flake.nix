@@ -27,7 +27,10 @@
       withSystem =
         system: f:
         let
-          pkgs = inputs.nixpkgs.legacyPackages.${system};
+          pkgs = import inputs.nixpkgs {
+            inherit system;
+            config.allowUnfree = true;
+          };
           inputs' = inputs |> lib.mapAttrs (_: projectInput system);
           self' = projectInput system self;
           packages' =

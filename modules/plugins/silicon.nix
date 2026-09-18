@@ -1,14 +1,6 @@
 {
   exo.mods =
-    {
-      pkgs,
-      lib,
-      config,
-      ...
-    }:
-    let
-      inherit (config.vimmax.mkKey) mkKeymap;
-    in
+    { pkgs, mkRaw, ... }:
     {
       extraPlugins = [ pkgs.vimPlugins.nvim-silicon ];
 
@@ -81,9 +73,16 @@
         '';
 
       keymaps = [
-        (mkKeymap [ "v" ] "<leader>ss" (lib.nixvim.mkRaw ''function() require("nvim-silicon").clip() end'')
-          "Copy screenshot to clipboard"
-        )
+        {
+          mode = [ "v" ];
+          key = "<leader>ss";
+          action = (mkRaw ''function() require("nvim-silicon").clip() end'');
+          options = {
+            desc = "Copy screenshot to clipboard";
+            silent = true;
+            noremap = true;
+          };
+        }
       ];
     };
 }

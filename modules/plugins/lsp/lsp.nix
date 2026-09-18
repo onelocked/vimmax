@@ -1,9 +1,6 @@
 {
   exo.mods =
-    { lib, config, ... }:
-    let
-      inherit (config.vimmax.mkKey) mkKeymap wKeyObj;
-    in
+    { lib, ... }:
     {
 
       plugins = {
@@ -67,19 +64,37 @@
               '';
         }
       ];
-      vimmax.wKeyList = [
-        (wKeyObj [
-          "<leader>l"
-          "󰿘"
-          "lsp"
-        ])
-      ];
-
       plugins.lsp.keymaps.extra = [
-        (mkKeymap "n" "<leader>lD" "<cmd>:lua Snacks.picker.lsp_definitions()<cr>" "Definitions list")
-        (mkKeymap "n" "<leader>ls" "<cmd>:lua Snacks.picker.lsp_symbols()<cr>" "Definitions list")
-
-        (mkKeymap "n" "<leader>lf" "<cmd>:lua require('conform').format()<cr>" "Format file")
+        {
+          mode = "n";
+          key = "<leader>lD";
+          action = "<cmd>:lua Snacks.picker.lsp_definitions()<cr>";
+          options = {
+            desc = "Definitions list";
+            silent = true;
+            noremap = true;
+          };
+        }
+        {
+          mode = "n";
+          key = "<leader>ls";
+          action = "<cmd>:lua Snacks.picker.lsp_symbols()<cr>";
+          options = {
+            desc = "Definitions list";
+            silent = true;
+            noremap = true;
+          };
+        }
+        {
+          mode = "n";
+          key = "<leader>lf";
+          action = "<cmd>:lua require('conform').format()<cr>";
+          options = {
+            desc = "Format file";
+            silent = true;
+            noremap = true;
+          };
+        }
       ];
     };
 }

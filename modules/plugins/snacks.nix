@@ -1,9 +1,8 @@
 {
   exo.mods =
-    { config, lib, ... }:
+    { lib, mkRaw, ... }:
     let
-      inherit (lib.nixvim) listToUnkeyedAttrs mkRaw;
-      inherit (config.vimmax.mkKey) mkKeymap wKeyObj;
+      inherit (lib.nixvim) listToUnkeyedAttrs;
     in
     {
       plugins.snacks = {
@@ -41,7 +40,7 @@
                       win = "input";
                       height = 1;
                       border = "single";
-                      title = "Find {title} {live} {flags}";
+                      title = "{title} {live} {flags}";
                       title_pos = "center";
                     }
                     (
@@ -213,62 +212,131 @@
           '';
         }
       ];
-      vimmax.wKeyList = [
-        (wKeyObj [
-          "<leader>:"
-          ""
-          ""
-          true
-        ])
-        (wKeyObj [
-          "<leader>s"
-          ""
-          "search"
-        ])
-        (wKeyObj [
-          "<leader>f"
-          ""
-          "file/find"
-        ])
-      ];
       keymaps = [
-        (mkKeymap "n" "<leader>.r" "<cmd>:lua Snacks.rename.rename_file()<cr>" "Rename file/variable +lsp")
-        (mkKeymap "n" "<leader>gB" "<cmd>:lua Snacks.gitbrowse()<cr>" "Git Browse")
+        {
+          mode = "n";
+          key = "<leader>.r";
+          action = "<cmd>:lua Snacks.rename.rename_file()<cr>";
+          options = {
+            desc = "Rename file/variable +lsp";
+            silent = true;
+            noremap = true;
+          };
+        }
+        {
+          mode = "n";
+          key = "<leader>gB";
+          action = "<cmd>:lua Snacks.gitbrowse()<cr>";
+          options = {
+            desc = "Git Browse";
+            silent = true;
+            noremap = true;
+          };
+        }
 
-        (mkKeymap "n" "<leader>ss" "<cmd>:lua Snacks.picker.smart()<cr>" "Smart")
-        (mkKeymap "n" "<leader>s," "<cmd>:lua Snacks.picker.buffers({layout = 'vscode'})<cr>" "Buffers")
+        {
+          mode = "n";
+          key = "<leader>ss";
+          action = "<cmd>:lua Snacks.picker.smart()<cr>";
+          options = {
+            desc = "Smart";
+            silent = true;
+            noremap = true;
+          };
+        }
+        {
+          mode = "n";
+          key = "<leader>s,";
+          action = "<cmd>:lua Snacks.picker.buffers({layout = 'vscode'})<cr>";
+          options = {
+            desc = "Buffers";
+            silent = true;
+            noremap = true;
+          };
+        }
 
-        (mkKeymap "n" "<leader>ff" (mkRaw ''
-          function()
-            local git_root = vim.fn.systemlist("git rev-parse --show-toplevel")[1]
-            local cwd = (git_root and vim.v.shell_error == 0) and git_root or vim.fn.getcwd()
-            Snacks.picker.files({ cwd = cwd })
-          end
-        '') "Find Files")
-        (mkKeymap "n" "<leader>f/" (mkRaw ''
-          function()
-            local git_root = vim.fn.systemlist("git rev-parse --show-toplevel")[1]
-            local cwd = (git_root and vim.v.shell_error == 0) and git_root or vim.fn.getcwd()
-            Snacks.picker.grep({ cwd = cwd })
-          end
-        '') "Grep")
-        (mkKeymap "n" "<leader>fr" "<cmd>:lua Snacks.picker.recent()<cr>" "Recent")
-        (mkKeymap "n" "<leader>fp" "<cmd>:lua Snacks.picker.projects()<cr>" "Pickers")
+        {
+          mode = "n";
+          key = "<leader>ff";
+          action = (
+            mkRaw ''
+              function()
+                local git_root = vim.fn.systemlist("git rev-parse --show-toplevel")[1]
+                local cwd = (git_root and vim.v.shell_error == 0) and git_root or vim.fn.getcwd()
+                Snacks.picker.files({ cwd = cwd })
+              end
+            ''
+          );
+          options = {
+            desc = "Find Files";
+            silent = true;
+            noremap = true;
+          };
+        }
+        {
+          mode = "n";
+          key = "<leader>f/";
+          action = (
+            mkRaw ''
+              function()
+                local git_root = vim.fn.systemlist("git rev-parse --show-toplevel")[1]
+                local cwd = (git_root and vim.v.shell_error == 0) and git_root or vim.fn.getcwd()
+                Snacks.picker.grep({ cwd = cwd })
+              end
+            ''
+          );
+          options = {
+            desc = "Grep";
+            silent = true;
+            noremap = true;
+          };
+        }
+        {
+          mode = "n";
+          key = "<leader>fr";
+          action = "<cmd>:lua Snacks.picker.recent()<cr>";
+          options = {
+            desc = "Recent";
+            silent = true;
+            noremap = true;
+          };
+        }
+        {
+          mode = "n";
+          key = "<leader>fp";
+          action = "<cmd>:lua Snacks.picker.projects()<cr>";
+          options = {
+            desc = "Pickers";
+            silent = true;
+            noremap = true;
+          };
+        }
 
-        (mkKeymap "n" "<leader>su" (mkRaw ''
-          function()
-            Snacks.picker.undo({
-              win = {
-                input = {
-                  keys = {
-                    ["y"] = { "yank_add", mode =  "n" },
-                    ["Y"] = { "yank_del", mode =  "n" },
+        {
+          mode = "n";
+          key = "<leader>su";
+          action = (
+            mkRaw ''
+              function()
+                Snacks.picker.undo({
+                  win = {
+                    input = {
+                      keys = {
+                        ["y"] = { "yank_add", mode =  "n" },
+                        ["Y"] = { "yank_del", mode =  "n" },
+                      },
+                    },
                   },
-                },
-              },
-            })
-          end
-        '') "Undo")
+                })
+              end
+            ''
+          );
+          options = {
+            desc = "Undo";
+            silent = true;
+            noremap = true;
+          };
+        }
       ];
     };
 }

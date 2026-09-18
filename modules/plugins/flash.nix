@@ -1,10 +1,6 @@
 {
   exo.mods =
-    { lib, config, ... }:
-    let
-      inherit (config.vimmax.mkKey) mkKeymap;
-      inherit (lib.nixvim) mkRaw;
-    in
+    { mkRaw, ... }:
     {
       plugins.flash = {
         enable = true;
@@ -12,10 +8,10 @@
       };
       keymaps =
         map
-          (
-            mode:
-            mkKeymap mode "<leader>fs" (
-              # lua
+          (mode: {
+            mode = mode;
+            key = "<leader>fs";
+            action = (
               mkRaw ''
                 function()
                   require('flash').jump({
@@ -23,8 +19,13 @@
                   })
                 end
               ''
-            ) "Flash Search"
-          )
+            );
+            options = {
+              desc = "Flash Search";
+              silent = true;
+              noremap = true;
+            };
+          })
           [
             "n"
             "v"

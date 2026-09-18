@@ -1,21 +1,10 @@
 {
   exo.mods =
-    {
-      lib,
-      pkgs,
-      config,
-      icons,
-      ...
-    }:
-    let
-      inherit (config.vimmax.mkKey) mkKeymap;
-      inherit (lib.nixvim) mkRaw;
-    in
+    { pkgs, mkRaw, ... }:
     {
       extraPlugins = [ pkgs.vimPlugins.gitsigns-nvim ];
 
-      extraConfigLua =
-        with icons.ui; # lua
+      extraConfigLua = # lua
         ''
           require('gitsigns').setup({
             current_line_blame = true,
@@ -30,11 +19,11 @@
 
             word_diff = false,
             signs = {
-              add = { text = '${LineLeft}' },
-              change = { text = '${LineLeft}' },
-              delete = { text = '${LineLeft}' },
-              topdelete = { text = '${Triangle}' },
-              changedelete = { text = '${BoldLineLeft}' },
+              add = { text = '▏' },
+              change = { text = '▏' },
+              delete = { text = '▏' },
+              topdelete = { text = '󰐊' },
+              changedelete = { text = '▎' },
             },
             preview_config = {
               border = 'rounded',
@@ -47,14 +36,38 @@
         '';
 
       keymaps = [
-        (mkKeymap "n" "<leader>gk" (mkRaw "function() require('gitsigns').blame_line({ full = true }) end")
-          "Blame Line (Full)"
-        )
-        (mkKeymap "n" "<leader>gK" ":lua require('gitsigns').blame()<CR>" "Blame File")
-        (mkKeymap "n" "<leader>gf"
-          (mkRaw "function() require('gitsigns').toggle_linehl(); require('gitsigns').toggle_deleted() end")
-          "Toggle Inline Diff"
-        )
+        {
+          mode = "n";
+          key = "<leader>gk";
+          action = (mkRaw "function() require('gitsigns').blame_line({ full = true }) end");
+          options = {
+            desc = "Blame Line (Full)";
+            silent = true;
+            noremap = true;
+          };
+        }
+        {
+          mode = "n";
+          key = "<leader>gK";
+          action = ":lua require('gitsigns').blame()<CR>";
+          options = {
+            desc = "Blame File";
+            silent = true;
+            noremap = true;
+          };
+        }
+        {
+          mode = "n";
+          key = "<leader>gf";
+          action = (
+            mkRaw "function() require('gitsigns').toggle_linehl(); require('gitsigns').toggle_deleted() end"
+          );
+          options = {
+            desc = "Toggle Inline Diff";
+            silent = true;
+            noremap = true;
+          };
+        }
       ];
     };
 }

@@ -1,29 +1,24 @@
 {
-  exo.mods =
-    { config, ... }:
-    {
-
-      plugins = {
-        which-key = {
-          enable = true;
-          settings.spec = config.vimmax.wKeyList;
-          settings.preset = "helix";
+  exo.mods = {
+    plugins = {
+      which-key = {
+        enable = true;
+        settings.preset = "helix";
+      };
+      tmux-navigator.enable = false;
+      web-devicons.enable = true;
+      lz-n.enable = true;
+      mini = {
+        enable = true;
+        mockDevIcons = true;
+        modules = {
+          icons = { };
+          pairs = { };
+          surround = { };
+          operators = { };
+          bufremove = { };
         };
-        tmux-navigator.enable = false;
-        web-devicons.enable = true;
-        lz-n.enable = true;
-        mini = {
-          enable = true;
-          mockDevIcons = true;
-          modules = {
-            icons = { };
-            pairs = { };
-            surround = { };
-            operators = { };
-            bufremove = { };
-          };
-        };
-
       };
     };
+  };
 }

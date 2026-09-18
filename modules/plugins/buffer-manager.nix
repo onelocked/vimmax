@@ -3,16 +3,11 @@
   exo.mods =
     {
       pkgs,
-      lib,
       config,
       inputs,
+      mkRaw,
       ...
     }:
-
-    let
-      inherit (config.vimmax.mkKey) mkKeymap wKeyObj;
-      inherit (lib.nixvim) mkRaw;
-    in
     {
       extraPlugins = [
         (pkgs.vimUtils.buildVimPlugin {
@@ -95,47 +90,101 @@
         };
       };
 
-      vimmax.wKeyList = [
-        (wKeyObj [
-          "<leader>b"
-          ""
-          "buffers"
-        ])
-      ];
-
       keymaps = [
-        (mkKeymap "n" "<leader>b." (
-          # lua
-          mkRaw ''
-            function()
-              harpoon = require("harpoon")
-              harpoon:list():add()
-            end
-          ''
-        ) "Add File to Harpoon")
-        (mkKeymap "n" "<leader>bm" "<cmd>:lua require('buffer_manager.ui').toggle_quick_menu()<cr>"
-          "Buffer Manager"
-        )
-        (mkKeymap "n" "<leader>bb" (
-          # lua
-          mkRaw ''
-            function()
-              harpoon = require("harpoon")
-              harpoon.ui:toggle_quick_menu(harpoon:list())
-            end
-          ''
-        ) "Harpoon ui")
-
-        (mkKeymap "n" "<leader>bp" "<cmd>:BufferLinePick<cr>" "Buffer Line Pick")
-        (mkKeymap "n" "<leader>qc" "<cmd>:bp | bd #<cr>" "Buffer close")
-
-        (mkKeymap "n" "<leader>bc" "<cmd>BufferLineCloseOther<cr>"
-          "Buffer close all except the current buffer"
-        )
-
-        (mkKeymap "n" "<s-Left>" ":BufferLineCyclePrev<cr>" "Buffer Previous")
-        (mkKeymap "n" "<s-Right>" ":BufferLineCycleNext<cr>" "Buffer Next")
+        {
+          mode = "n";
+          key = "<leader>b.";
+          action = (
+            mkRaw ''
+              function()
+                harpoon = require("harpoon")
+                harpoon:list():add()
+              end
+            ''
+          );
+          options = {
+            desc = "Add File to Harpoon";
+            silent = true;
+            noremap = true;
+          };
+        }
+        {
+          mode = "n";
+          key = "<leader>bm";
+          action = "<cmd>:lua require('buffer_manager.ui').toggle_quick_menu()<cr>";
+          options = {
+            desc = "Buffer Manager";
+            silent = true;
+            noremap = true;
+          };
+        }
+        {
+          mode = "n";
+          key = "<leader>bb";
+          action = (
+            mkRaw ''
+              function()
+                harpoon = require("harpoon")
+                harpoon.ui:toggle_quick_menu(harpoon:list())
+              end
+            ''
+          );
+          options = {
+            desc = "Harpoon ui";
+            silent = true;
+            noremap = true;
+          };
+        }
+        {
+          mode = "n";
+          key = "<leader>bp";
+          action = "<cmd>:BufferLinePick<cr>";
+          options = {
+            desc = "Buffer Line Pick";
+            silent = true;
+            noremap = true;
+          };
+        }
+        {
+          mode = "n";
+          key = "<leader>qc";
+          action = "<cmd>:bp | bd #<cr>";
+          options = {
+            desc = "Buffer close";
+            silent = true;
+            noremap = true;
+          };
+        }
+        {
+          mode = "n";
+          key = "<leader>bc";
+          action = "<cmd>BufferLineCloseOther<cr>";
+          options = {
+            desc = "Buffer close all except the current buffer";
+            silent = true;
+            noremap = true;
+          };
+        }
+        {
+          mode = "n";
+          key = "<s-Left>";
+          action = ":BufferLineCyclePrev<cr>";
+          options = {
+            desc = "Buffer Previous";
+            silent = true;
+            noremap = true;
+          };
+        }
+        {
+          mode = "n";
+          key = "<s-Right>";
+          action = ":BufferLineCycleNext<cr>";
+          options = {
+            desc = "Buffer Next";
+            silent = true;
+            noremap = true;
+          };
+        }
       ];
-
     };
 }

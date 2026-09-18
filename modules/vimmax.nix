@@ -11,24 +11,23 @@
       nixvim = "gh:nix-community/nixvim";
     };
     perSystem =
-      { system, ... }:
+      { system, pkgs, ... }:
       {
-        _module.args.pkgs = import inputs.nixpkgs {
-          inherit system;
-          config.allowUnfree = true;
-        };
         packages = lib.genAttrs [ "light" "dark" ] (
           theme:
           (inputs.nixvim.lib.evalNixvim {
             inherit system;
-            extraSpecialArgs = { inherit inputs; };
+            extraSpecialArgs = {
+              inherit inputs;
+              inherit (inputs.nixvim.lib.nixvim) mkRaw;
+            };
             modules = with config.exo; [
               core
               mods
               visual
               {
-                nixpkgs.source = inputs.nixpkgs;
-                vimmax.theme = theme;
+                nixpkgs = { inherit pkgs; };
+                vimmax = { inherit theme; };
               }
             ];
           }).config.build.package
