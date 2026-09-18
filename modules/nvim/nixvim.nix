@@ -1,5 +1,5 @@
 {
-  exo.core =
+  neovim.core =
     {
       lib,
       pkgs,

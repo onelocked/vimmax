@@ -1,5 +1,5 @@
 {
-  exo.visual = {
+  neovim.visual = {
     plugins.highlight-colors = {
       enable = true;
       settings = {

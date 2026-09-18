@@ -1,5 +1,5 @@
 {
-  exo.mods = {
+  neovim.mods = {
 
     plugins.todo-comments = {
       enable = true;

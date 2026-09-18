@@ -1,5 +1,5 @@
 {
-  exo.mods =
+  neovim.mods =
     { pkgs, mkRaw, ... }:
     {
       extraPlugins = [ pkgs.vimPlugins.gitsigns-nvim ];

@@ -1,5 +1,5 @@
 {
-  exo.visual =
+  neovim.visual =
     { pkgs, config, ... }:
     let
       c = config.vimmax.${config.vimmax.theme};

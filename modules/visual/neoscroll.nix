@@ -1,5 +1,5 @@
 {
-  exo.visual =
+  neovim.visual =
     { pkgs, ... }:
     {
       extraPlugins = with pkgs.vimPlugins; [

@@ -1,5 +1,5 @@
 {
-  exo.mods =
+  neovim.mods =
     { config, lib, ... }:
     {
       extraConfigLua = # lua

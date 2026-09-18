@@ -1,5 +1,5 @@
 {
-  exo.mods = {
+  neovim.mods = {
     plugins = {
       lsp.servers.lua_ls = {
         enable = true;

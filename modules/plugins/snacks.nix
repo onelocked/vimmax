@@ -1,5 +1,5 @@
 {
-  exo.mods =
+  neovim.mods =
     { lib, mkRaw, ... }:
     let
       inherit (lib.nixvim) listToUnkeyedAttrs;

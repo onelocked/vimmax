@@ -21,7 +21,7 @@
               inherit inputs;
               inherit (inputs.nixvim.lib.nixvim) mkRaw;
             };
-            modules = with config.exo; [
+            modules = with config.neovim; [
               core
               mods
               visual
@@ -40,7 +40,7 @@
       type = lib.types.listOf lib.types.str;
       default = [ "x86_64-linux" ];
     };
-    exo = {
+    neovim = {
       mods = lib.mkOption {
         type = lib.types.deferredModule;
       };

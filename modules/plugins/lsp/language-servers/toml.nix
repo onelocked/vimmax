@@ -1,5 +1,5 @@
 {
-  exo.mods =
+  neovim.mods =
     { pkgs, lib, ... }:
     {
       plugins.lsp.servers.taplo.enable = true;

@@ -1,5 +1,5 @@
 {
-  exo.mods =
+  neovim.mods =
     { lib, config, ... }:
     let
       cfg = config.plugins.firenvim;

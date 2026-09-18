@@ -1,5 +1,5 @@
 {
-  exo.mods =
+  neovim.mods =
     { mkRaw, ... }:
     {
       plugins.flash = {

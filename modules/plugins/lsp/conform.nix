@@ -1,5 +1,5 @@
 {
-  exo.mods =
+  neovim.mods =
     { lib, pkgs, ... }:
     {
       plugins.conform-nvim = {

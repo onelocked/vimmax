@@ -1,6 +1,6 @@
 {
   tack.inputs.fetch.buffer-manager = "gh:j-morano/buffer_manager.nvim";
-  exo.mods =
+  neovim.mods =
     {
       pkgs,
       config,

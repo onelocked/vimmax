@@ -1,5 +1,5 @@
 {
-  exo.visual = {
+  neovim.visual = {
     plugins = {
       dressing = {
         enable = true;
