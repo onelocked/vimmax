@@ -25,6 +25,12 @@
                 "<c-u>" = (listToUnkeyedAttrs [ "preview_scroll_up" ]) // {
                   mode = "n";
                 };
+                "<CR>" = (listToUnkeyedAttrs [ "hypr_focus_or_edit" ]) // {
+                  mode = [
+                    "n"
+                    "i"
+                  ];
+                };
               };
             in
             {

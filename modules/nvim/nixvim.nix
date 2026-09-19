@@ -109,7 +109,7 @@
       extraConfigLua = # lua
         ''
           vim.opt.title = true
-          vim.opt.titlestring = "nvim - %t%( %M%)"
+          vim.opt.titlestring = "nvim - %F%( %M%)"
 
           vim.opt.whichwrap:append("<>[]hl")
           vim.opt.listchars:append("space:·")
