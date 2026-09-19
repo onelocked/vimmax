@@ -27,11 +27,23 @@
       hypr_focus_or_edit = mkRaw ''
         function(picker, item, action)
           local confirm = require("snacks.picker.actions").confirm
-          if not item or not item.file then
+          if not item or not (item.file or item._path) then
             return confirm(picker, item, action)
           end
 
-          local path = vim.fn.fnamemodify(item.file, ":p:~")
+          -- Snacks picker items can carry a path RELATIVE to the picker root
+          -- (item.cwd), e.g. when the nvim cwd differs from the picker cwd
+          -- (yazi-spawned nvim). Resolve against the picker root, not nvim cwd.
+          local raw = item._path or item.file
+          local path
+          if raw:sub(1, 1) == "/" or raw:sub(1, 1) == "~" then
+            path = vim.fn.fnamemodify(raw, ":p")
+          else
+            local base = item.cwd or picker.cwd or vim.fn.getcwd()
+            path = vim.fn.fnamemodify(base .. "/" .. raw, ":p")
+          end
+
+          local scan_path = vim.fn.fnamemodify(path, ":p:~")
           local kitty_window_id = nil
 
           local uid = vim.fn.system("id -u"):gsub("%s+", "")
@@ -40,7 +52,7 @@
             local connect_ok, chan_id = pcall(vim.fn.sockconnect, "pipe", socket, {rpc=true})
             if connect_ok and chan_id > 0 then
               local req_ok, remote_path = pcall(vim.rpcrequest, chan_id, "nvim_eval", "expand('%:p:~')")
-              if req_ok and remote_path == path then
+              if req_ok and remote_path == scan_path then
                 kitty_window_id = vim.rpcrequest(chan_id, "nvim_eval", 'getenv("KITTY_WINDOW_ID")')
                 
                 -- Jump to line if grep/pos exists
@@ -68,7 +80,7 @@
           if _G.open_in_kitty then
             local line = item.pos and item.pos[1] or nil
             local col = item.pos and item.pos[2] or nil
-            _G.open_in_kitty(item.file, line, col)
+            _G.open_in_kitty(path, line, col)
           else
             -- Fallback if custom-buffer.nix isn't loaded
             confirm(picker, item, action)
