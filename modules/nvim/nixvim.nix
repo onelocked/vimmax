@@ -24,6 +24,18 @@
       globals = {
         mapleader = " ";
         floating_window_options.border = "rounded";
+        loaded_netrw = 1;
+        loaded_netrwPlugin = 1;
+        loaded_gzip = 1;
+        loaded_tar = 1;
+        loaded_tarPlugin = 1;
+        loaded_zip = 1;
+        loaded_zipPlugin = 1;
+        loaded_tutor_mode_plugin = 1;
+        loaded_2html_plugin = 1;
+        loaded_matchit = 1;
+        loaded_matchparen = 1;
+        loaded_spellfile_plugin = 1;
       };
 
       opts = {
