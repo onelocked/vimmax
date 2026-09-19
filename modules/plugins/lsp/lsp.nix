@@ -2,15 +2,38 @@
   neovim.mods = {
 
     plugins = {
-      mini.modules.comment = {
-        mappings = {
-          comment = "<leader>/";
-          comment_line = "<leader>/";
-          comment_visual = "<leader>/";
-          ignore_blank_line = true;
+      mini = {
+        enable = true;
+        modules.comment = {
+          mappings = {
+            comment = "<leader>/";
+            comment_line = "<leader>/";
+            comment_visual = "<leader>/";
+            ignore_blank_line = true;
+          };
+        };
+        lazyLoad = {
+          enable = true;
+          settings = {
+            keys = [ "<leader>/" ];
+            event = [
+              "BufReadPost"
+              "BufNewFile"
+            ];
+          };
         };
       };
-      trim.enable = true;
+
+      trim = {
+        enable = true;
+        lazyLoad = {
+          enable = true;
+          settings = {
+            event = [ "BufWritePre" ];
+          };
+        };
+      };
+
       lsp = {
         enable = true;
         inlayHints = true;
@@ -42,6 +65,7 @@
         focusable = false;
       };
     };
+
     plugins.lsp.keymaps.extra = [
       {
         mode = "n";

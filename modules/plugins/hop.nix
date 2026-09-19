@@ -24,6 +24,19 @@
           quit_key = "<Esc>";
           teasing = true;
         };
+
+        lazyLoad = {
+          enable = true;
+          settings = {
+            cmd = [
+              "HopWord"
+              "HopLine"
+              "HopChar1"
+              "HopChar2"
+              "HopPattern"
+            ];
+          };
+        };
       };
 
       keymaps = [

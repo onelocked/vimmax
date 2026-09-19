@@ -1,17 +1,22 @@
 {
-  neovim.mods =
-    { pkgs, ... }:
-    {
-      extraPlugins = [ pkgs.vimPlugins.trouble-nvim ];
-      extraConfigLua = # lua
-        ''
-          require('trouble').setup({
-            modes = {
-              symbols = {
-                win = { position = "right" },
-              },
-            },
-          })
-        '';
+  neovim.mods = {
+    plugins.trouble = {
+      enable = true;
+      settings = {
+        modes = {
+          symbols = {
+            win = {
+              position = "right";
+            };
+          };
+        };
+      };
+      lazyLoad = {
+        enable = true;
+        settings = {
+          cmd = [ "Trouble" ];
+        };
+      };
     };
+  };
 }
