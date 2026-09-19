@@ -8,10 +8,6 @@ systems = "systems"
 tack = "tack"
 treefmt-nix = "treefmt-nix"
 
-[inputs.buffer-manager]
-type = "fetch"
-url = "gh:j-morano/buffer_manager.nvim"
-
 [inputs.nixpkgs]
 url = "gh:nixos/nixpkgs/nixos-unstable"
 
